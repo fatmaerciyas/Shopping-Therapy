@@ -1,5 +1,7 @@
 import Categories from "../components/home/Categories";
-import Products from "../components/home/Product";
+import ProductListing from "../components/home/ProductListing";
+import Products from "../components/home/Products";
+
 import SliderComp from "../components/home/SliderComp";
 import Sorting from "../components/home/Sorting";
 
@@ -10,8 +12,10 @@ export default function Home() {
       <Sorting />
       <div className="flex">
         <Categories />
-        <Products />
       </div>
+      <Products />
+      <br />
+      <ProductListing />
     </div>
   );
 }

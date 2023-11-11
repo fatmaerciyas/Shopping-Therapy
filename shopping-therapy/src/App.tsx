@@ -5,6 +5,8 @@ import "./index.css";
 import PageContainer from "./containers/PageContainer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ProductDetail from "./components/home/ProductDetail";
+import AddProduct from "./components/home/AddProduct";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/product/:productId" element={<ProductDetail />} />
+            <Route path="/add" element={<AddProduct />} />
           </Routes>
         </BrowserRouter>
       </PageContainer>
