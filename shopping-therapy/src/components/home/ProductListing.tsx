@@ -7,37 +7,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../api/url.contants";
 import { Product } from "../../models/Product";
-
-// export default function ProductListing() {
-//   const products = useSelector((state) => state);
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     const fetchProducts = async () => {
-//       await axios
-//         .get("https://localhost:7049/api/Product")
-//         .then((response) => {
-//           // Assuming that 'response.data' is an array of ProductItem objects
-//           dispatch(setProduct(response.data));
-//         })
-//         .catch((err) => {
-//           console.log("Err", err);
-//         });
-//     };
-
-//     fetchProducts();
-//   }, [dispatch]);
-
-//   console.log(products);
-//   return (
-//     <div>
-//       <h1>Product Listing</h1>
-//     </div>
-//   );
-// }
+import { useNavigate } from "react-router-dom";
 
 export default function ProductListing() {
   const [products, setProducts] = useState<Product[]>([]);
+  const redirect = useNavigate();
 
   useEffect(() => {
     async function fetchdata() {
@@ -48,14 +22,35 @@ export default function ProductListing() {
     fetchdata();
   }, [products]);
 
+  const redirectToEditPage = (id: string) => {
+    redirect(`/edit/${id}`);
+  };
+
+  const redirectToDeletePage = (id: string) => {
+    redirect(`/delete/${id}`);
+  };
+
   if (!products) return <p>products are empty</p>;
 
   return (
     <div>
-      {products.map((product, index) => {
+      {products.map((product) => {
+        if (!product) {
+          return null;
+        }
+
+        const { name, productId } = product;
+
         return (
-          <ul key={Math.random().toString()}>
-            <li>product name : {products[index].name}</li>
+          <ul key={productId}>
+            <li>product name : {name}</li>
+            <button onClick={() => redirectToEditPage(productId!.toString())}>
+              Edit
+            </button>
+            <br />
+            <button onClick={() => redirectToDeletePage(productId!.toString())}>
+              Delete
+            </button>
           </ul>
         );
       })}

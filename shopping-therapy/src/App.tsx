@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductDetail from "./components/home/ProductDetail";
 import AddProduct from "./components/home/AddProduct";
+import EditProduct from "./components/home/EditProduct";
+import DeleteProduct from "./components/home/DeleteProduct";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/product/:productId" element={<ProductDetail />} />
             <Route path="/add" element={<AddProduct />} />
+            <Route path="/edit/:id" element={<EditProduct />} />
+            <Route path="/delete/:id" element={<DeleteProduct />} />
           </Routes>
         </BrowserRouter>
       </PageContainer>

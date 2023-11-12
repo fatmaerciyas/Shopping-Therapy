@@ -5,8 +5,8 @@ export interface Product {
   image?: string;
   stock: number;
   price: number;
-  created_at: string;
-  modified_at: string;
+  // created_at: string;
+  // modified_at: string;
   brand: string;
   quantity: number;
   //   productCarts?: any;

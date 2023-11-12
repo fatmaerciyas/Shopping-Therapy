@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Product } from "../../models/Product";
-import axios from "axios";
 
+//import agent from "../../api/agent";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { baseUrl } from "../../api/url.contants";
 import agent from "../../api/agent";
-import { useNavigate } from "react-router-dom";
-export default function AddProduct() {
+
+export default function EditProduct() {
   const [product, setProduct] = useState<Partial<Product>>({
     name: "",
     description: "",
@@ -14,16 +17,29 @@ export default function AddProduct() {
     price: 0,
     quantity: 1,
   });
-  axios.defaults.withCredentials = true;
 
   const redirect = useNavigate();
-
+  const { id } = useParams();
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProduct({
       ...product,
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    axios.get<Product>(`${baseUrl}Product/${id}`).then((response) =>
+      setProduct({
+        name: response.data.name,
+        description: response.data.description,
+        image: "",
+        brand: response.data.brand,
+        stock: 100,
+        price: response.data.price,
+        quantity: 1,
+      })
+    );
+  }, [id]);
 
   const handleSaveBtnClick = (e) => {
     e.preventDefault();
@@ -42,13 +58,13 @@ export default function AddProduct() {
       price: Number(product.price),
     };
 
-    agent.Product.createProduct(data)
+    agent.Product.updateProduct(data, Number(id!))
       .then((products) => setProduct(products))
       .catch((error) => console.log(error))
       .finally(() => redirect("/"));
 
     // axios
-    //   .post("https://localhost:7049/api/Product", data)
+    //   .put(`${baseUrl}/Product/${id}`, data)
     //   .then(function (response) {
     //     console.log(response);
     //   })
@@ -152,7 +168,7 @@ export default function AddProduct() {
             onClick={(e) => handleBackBtnClick(e)}
             className="rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yelow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Save
+            Back
           </button>
           <button
             type="submit"
