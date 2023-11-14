@@ -3,6 +3,7 @@ import { Product } from "../models/Product";
 
 const responseBody = (response: AxiosResponse) => response.data;
 axios.defaults.baseURL = "https://localhost:7049/api/";
+axios.defaults.withCredentials = true;
 
 function createFormData(item: any) {
   const formData = new FormData();
@@ -48,10 +49,31 @@ const Product = {
   updateProduct: (product: any, id: number) =>
     requests.putForm(`Product?id=${id}`, createFormData(product)),
   deleteProduct: (id: number) => requests.delete(`Product/${id}`),
+  getByCategory: (product: any, categoryId: number) =>
+    requests.get(`Product?categoryId=${categoryId}`),
+};
+
+const Category = {
+  createCategory: (category: any) =>
+    requests.postForm("Category", createFormData(category)),
+  updateCategory: (category: any, id: number) =>
+    requests.putForm(`Category?id=${id}`, createFormData(category)),
+  deleteCategory: (id: number) => requests.delete(`Category/${id}`),
+};
+
+const Cart = {
+  createCart: (productId: number, quantity = 1) =>
+    requests.post(`Cart?productId=${productId}&quantity=${quantity}`, {}),
+  updateCart: (productId: number, quantity = 1) =>
+    requests.post(`Cart?productId=${productId}&quantity=${quantity}`, {}),
+  deleteCart: (productId: number, quantity = 1) =>
+    requests.delete(`Cart?productId=${productId}&quantity=${quantity}`),
 };
 
 const agent = {
   Product,
+  Category,
+  Cart,
 };
 
 export default agent;

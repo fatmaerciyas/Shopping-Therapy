@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Product } from "../../models/Product";
 
 interface ProductItemProps {
@@ -5,8 +6,12 @@ interface ProductItemProps {
 }
 
 export default function ProductItem({ product }: ProductItemProps) {
+  const navigate = useNavigate();
   return (
-    <div className="group ">
+    <div
+      onClick={() => navigate(`/catalog/${product.productId}`)}
+      className="group "
+    >
       <div className="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
         <img src={product.image} alt="" />
 

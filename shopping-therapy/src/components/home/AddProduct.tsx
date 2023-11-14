@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Product } from "../../models/Product";
-import axios from "axios";
 
 import agent from "../../api/agent";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +13,6 @@ export default function AddProduct() {
     price: 0,
     quantity: 1,
   });
-  axios.defaults.withCredentials = true;
 
   const redirect = useNavigate();
 
