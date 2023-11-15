@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Product } from "../models/Product";
-import { Category } from "../models/Category";
+import { Product } from "../../models/Product";
+import { Category } from "../../models/Category";
 import axios from "axios";
-import { baseUrl } from "../api/url.contants";
-import Categories from "../components/category/Categories";
-import ProductListing from "../components/product/ProductListing";
+import { baseUrl } from "../../api/url.contants";
+import Categories from "../../components/category/Categories";
+import ProductListing from "../../components/product/ProductListing";
 
 export default function Catalog() {
   const [products, setProducts] = useState<Product[]>([]);

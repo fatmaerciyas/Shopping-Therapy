@@ -1,6 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth.hook";
+
+import Button from "./dashboard/Button";
+import { PATH_DASHBOARD, PATH_PUBLIC } from "../router/Routes";
 
 export default function Header() {
+  const { isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <>
       <nav
@@ -23,7 +30,7 @@ export default function Header() {
 
           <div className="menu-extras">
             <div className="menu-item">
-              <a className="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+              <a className="navbar-toggle" id="isToggle">
                 <div className="lines">
                   <span></span>
                   <span></span>
@@ -251,16 +258,37 @@ export default function Header() {
                   Contact
                 </Link>
               </li>
-              <li>
-                <a href="contact-two.html" className="sub-menu-item">
-                  Login
-                </a>
-              </li>
-              <li>
-                <a href="contact-two.html" className="sub-menu-item">
-                  Register
-                </a>
-              </li>
+              {isAuthenticated ? (
+                <div className="flex items-center gap-2">
+                  <Button
+                    label="Dashboard"
+                    onClick={() => navigate(PATH_DASHBOARD.dashboard)}
+                    type="button"
+                    variant="light"
+                  />
+                  <Button
+                    label="Logout"
+                    onClick={logout}
+                    type="button"
+                    variant="light"
+                  />
+                </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Button
+                    label="Register"
+                    onClick={() => navigate(PATH_PUBLIC.register)}
+                    type="button"
+                    variant="light"
+                  />
+                  <Button
+                    label="Login"
+                    onClick={() => navigate(PATH_PUBLIC.login)}
+                    type="button"
+                    variant="light"
+                  />
+                </div>
+              )}
             </ul>
           </div>
         </div>

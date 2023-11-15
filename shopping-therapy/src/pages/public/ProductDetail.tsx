@@ -1,8 +1,8 @@
 import { NavLink, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Product } from "../models/Product";
-import { baseUrl } from "../api/url.contants";
+import { Product } from "../../models/Product";
+import { baseUrl } from "../../api/url.contants";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -14,22 +14,22 @@ export default function ProductDetail() {
       .then((response) => setProduct(response.data));
   }, [id, product]);
 
-  function handleAddItem(productId: number) {
-    setLoading(true);
-    agent.Cart.addItem(productId)
-      .then((cart) => dispatch(setCart(cart)))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-    console.log(item);
-  }
+  // function handleAddItem(productId: number) {
+  //   setLoading(true);
+  //   agent.Cart.addItem(productId)
+  //     .then((cart) => dispatch(setCart(cart)))
+  //     .catch((error) => console.log(error))
+  //     .finally(() => setLoading(false));
+  //   console.log(item);
+  // }
 
-  function handleRemoveItem(productId: number, quantity = 1) {
-    setLoading(true);
-    agent.Cart.removeItem(productId, quantity)
-      .then(() => dispatch(removeCartItemAsync({ productId, quantity })))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
-  }
+  // function handleRemoveItem(productId: number, quantity = 1) {
+  //   setLoading(true);
+  //   agent.Cart.removeItem(productId, quantity)
+  //     .then(() => dispatch(removeCartItemAsync({ productId, quantity })))
+  //     .catch((error) => console.log(error))
+  //     .finally(() => setLoading(false));
+  // }
 
   return (
     <>
