@@ -60,11 +60,24 @@ const Layout = () => {
         />
         <link rel="stylesheet" href="../assets/css/tailwind.min.css" />
       </head>
-      <body className="font-nunito text-base text-black dark:text-white">
+      <body className="font-nunito text-base text-black dark:text-white ">
+        {isAuthenticated ? (
+          <>
+            <div className="flex flex-row mt-20 p-0 ">
+              {sideBarRenderer()}
+              <Outlet />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex flex-col">
+              <Outlet />
+              <Footer />
+            </div>
+          </>
+        )}
+
         <Header />
-        {sideBarRenderer()}
-        <Outlet />
-        <Footer />
       </body>
 
       <a

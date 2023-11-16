@@ -26,11 +26,11 @@ const InputField = ({
   };
 
   const dynamicClassName = error
-    ? "border-red-500 rounded-lg block w-full"
-    : "border-[#754eb477] rounded-lg block w-full";
+    ? "rounded-lg block w-full "
+    : "border-[#754eb477] rounded-lg block w-full ";
 
   return (
-    <div className="px-4 my-2 w-9/12 rounded-lg  ">
+    <div className="px-4 my-2 w-9/12 rounded-lg">
       {renderTopRow()}
       <Controller
         name={inputName}

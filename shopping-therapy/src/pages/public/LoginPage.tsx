@@ -52,14 +52,12 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-row pageTemplate1 my-[200px]">
+    <div className="flex flex-row pageTemplate1 my-24">
       {/* <div>Left</div> */}
       <div className="max-sm:hidden flex-1 min-h-[600px] h-4/5 bg-gradient-to-tr from-[#DAC6FB] via-amber-400 to-[#AAC1F6] flex flex-col justify-center items-center rounded-l-2xl">
         <div className="h-3/5 p-6 rounded-2xl flex flex-col gap-8 justify-center items-start bg-white bg-opacity-20 border border-[#ffffff55] relative">
-          <h1 className="text-6xl font-bold text-[#754eb4]">Dev Empower</h1>
-          <h1 className="text-3xl font-bold text-[#754eb490]">
-            A Home for developers
-          </h1>
+          <h1 className="text-6xl font-bold text-[#754eb4]">Login Page</h1>
+
           <h4 className="text-3xl font-semibold text-white">
             Users Management
           </h4>
