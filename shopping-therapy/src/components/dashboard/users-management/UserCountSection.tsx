@@ -25,20 +25,30 @@ const UserCountSection = ({ usersList }: IProps) => {
   });
 
   const userCountData = [
-    { count: owners, role: RolesEnum.OWNER, icon: FaUserCog, color: "#3b3549" },
+    {
+      count: owners,
+      role: RolesEnum.OWNER,
+      icon: FaUserCog,
+      color: "rgb(251 207 232)",
+    },
     {
       count: admins,
       role: RolesEnum.ADMIN,
       icon: FaUserShield,
-      color: "#9333EA",
+      color: "rgb(165 243 252)",
     },
     {
       count: managers,
       role: RolesEnum.MANAGER,
       icon: FaUserTie,
-      color: "#0B96BC",
+      color: "rgb(245 158 11)",
     },
-    { count: users, role: RolesEnum.USER, icon: FaUser, color: "#FEC223" },
+    {
+      count: users,
+      role: RolesEnum.USER,
+      icon: FaUser,
+      color: "rgb(167 243 208)",
+    },
   ];
 
   return (

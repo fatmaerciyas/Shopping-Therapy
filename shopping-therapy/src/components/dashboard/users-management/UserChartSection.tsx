@@ -7,8 +7,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
 import { IAuthUser, RolesEnum } from "../../../models/Auth";
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -70,21 +70,19 @@ const UserChartSection = ({ usersList }: IProps) => {
       {
         label: "count",
         data: chartValues,
-        borderColor: "#754eb475",
-        backgroundColor: "#754eb4",
-        pointBorderColor: "transparent",
-        tension: 0.25,
+        borderColor: "rgb(9, 181, 33)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
   };
 
   return (
-    <div className="col-span-1 lg:col-span-3 bg-white p-2 rounded-md">
-      <h1 className="text-xl font-bold mb-2">Users Chart</h1>
+    <div className="col-span-1 lg:col-span-3  bg-white p-2 rounded-md">
+      <h1 className="text-xl font-bold my-6">Users Chart</h1>
       <Line
         options={chartOptions}
         data={chartData}
-        className="bg-white p-2 rounded-md"
+        className="bg-gray-50 p-2 rounded-lg"
       />
     </div>
   );

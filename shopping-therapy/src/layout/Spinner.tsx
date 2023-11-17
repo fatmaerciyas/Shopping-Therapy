@@ -1,6 +1,8 @@
 const Spinner = () => {
   return (
-    <div className="mx-auto w-12 h-12 border-8 border-purple-300 border-t-purple-700 rounded-full animate-spin"></div>
+    <div className="app-preloader fixed z-50 grid h-full w-full place-content-center bg-slate-50 dark:bg-navy-900">
+      <div className="app-preloader-inner relative inline-block h-48 w-48"></div>
+    </div>
   );
 };
 
