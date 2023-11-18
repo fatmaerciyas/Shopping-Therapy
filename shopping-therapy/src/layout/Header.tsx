@@ -16,16 +16,7 @@ export default function Header() {
       >
         <div className="container relative">
           <a className="logo" href="index.html">
-            <img
-              src="assets/images/logo-dark.png"
-              className="inline-block dark:hidden"
-              alt=""
-            />
-            <img
-              src="assets/images/logo-light.png"
-              className="hidden dark:inline-block"
-              alt=""
-            />
+            OneStopShop
           </a>
 
           <div className="menu-extras">
@@ -240,7 +231,7 @@ export default function Header() {
           </ul>
 
           <div id="navigation">
-            <ul className="navigation-menu justify-between align-middle">
+            <ul className="navigation-menu justify-end align-middle">
               <li>
                 <Link to="/catalog" className="sub-menu-item">
                   Catalog

@@ -5,17 +5,31 @@ import axios from "axios";
 import { baseUrl } from "../../api/url.contants";
 import Categories from "../../components/category/Categories";
 import ProductListing from "../../components/product/ProductListing";
+import Spinner from "../../layout/Spinner";
 
-export default function Catalog() {
+interface ICategoryItem {
+  category_id: number;
+}
+
+export default function Catalog({ category_id }: ICategoryItem) {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [sort, setSort] = useState("");
 
+  const [query, setQuery] = useState("Electronics");
+
   useEffect(() => {
     async function fetchdata() {
       try {
+        if (category_id) {
+          const responseProduct = await axios.get<Product[]>(
+            baseUrl + `Product?categoryId=${category_id}`
+          );
+          setProducts(responseProduct.data);
+          setIsLoaded(true);
+        }
         const responseProduct = await axios.get<Product[]>(baseUrl + "Product");
         setProducts(responseProduct.data);
 
@@ -25,7 +39,7 @@ export default function Catalog() {
       }
     }
     fetchdata();
-  }, []);
+  }, [category_id]);
 
   useEffect(() => {
     async function fetchdata() {
@@ -36,27 +50,30 @@ export default function Catalog() {
     fetchdata();
   }, [categories]);
 
+  function handleSearch(){
+    products.map((product) => 
+    if(product.name.includes(query)){
+      
+    })
+  }
+
+  if (!isLoaded) return <Spinner />;
+
   return (
     <>
       <section className="relative table w-full py-20 lg:py-24 bg-gray-50 dark:bg-slate-800">
         <div className="container relative">
           <div className="grid grid-cols-1 mt-14">
-            <h3 className="text-3xl leading-normal font-semibold">Shop Grid</h3>
+            <h3 className="text-3xl leading-normal font-semibold">Catalog</h3>
           </div>
 
           <div className="relative mt-3">
             <ul className="tracking-[0.5px] mb-0 inline-block">
               <li className="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out hover:text-indigo-600">
-                <a href="index-shop.html">Techwind</a>
+                <a href="index-shop.html">OneStopShop</a>
               </li>
               <li className="inline-block text-base text-slate-950 dark:text-white mx-0.5 ltr:rotate-0 rtl:rotate-180">
                 <i className="uil uil-angle-right-b"></i>
-              </li>
-              <li
-                className="inline-block uppercase text-[13px] font-bold text-indigo-600"
-                aria-current="page"
-              >
-                Product Grid Two
               </li>
             </ul>
           </div>
@@ -79,9 +96,8 @@ export default function Catalog() {
                         ></i>
 
                         <input
-                          name="search"
-                          id="searchname"
-                          type="text"
+                          value={query}
+                          onChange={(e) => setQuery(e.target.value)}
                           className="form-input w-full py-2 px-3 h-10 ps-9 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
                           placeholder="Search"
                         />
@@ -95,11 +111,16 @@ export default function Catalog() {
                     />
 
                     <div className="mt-2">
-                      <input
+                      <button onClick={handleSearch}
                         type="submit"
-                        className="py-2 px-5 inline-block tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md w-full"
-                        value="Apply Filter"
-                      />
+                        className="py-2 px-5 inline-block
+                        tracking-wide border align-middle duration-500 text-base
+                        text-center bg-indigo-600 hover:bg-indigo-700
+                        border-indigo-600 hover:border-indigo-700 text-white
+                        rounded-md w-full"
+                      >
+                        Apply filter
+                      </button>
                     </div>
                   </div>
                 </form>
@@ -121,35 +142,6 @@ export default function Catalog() {
             </div>
 
             <div className="lg:col-span-7 md:col-span-6">
-              <span className="bg-indigo-600/5 text-indigo-600 text-xs font-bold px-2.5 py-0.5 rounded h-5">
-                Mobile Apps
-              </span>
-              <h4 className="md:text-3xl text-2xl lg:leading-normal leading-normal font-medium my-4">
-                Available for your <br /> Smartphones
-              </h4>
-              <p className="text-slate-400 max-w-xl mb-0">
-                Search all the open positions on the web. Get your own
-                personalized salary estimate. Read reviews on over 30000+
-                companies worldwide.
-              </p>
-              <div className="my-5">
-                <a href="#">
-                  <img
-                    src="assets/images/app/app.png"
-                    className="m-1 inline-block"
-                    alt=""
-                  />
-                </a>
-
-                <a href="#">
-                  <img
-                    src="assets/images/app/playstore.png"
-                    className="m-1 inline-block"
-                    alt=""
-                  />
-                </a>
-              </div>
-
               <div className="inline-block">
                 <div className="pt-4 flex items-center border-t border-gray-100 dark:border-gray-700">
                   <i

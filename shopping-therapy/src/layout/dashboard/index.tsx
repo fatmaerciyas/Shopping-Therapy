@@ -20,10 +20,7 @@ const Layout = () => {
   return (
     <html lang="en" className="light scroll-smooth" dir="ltr">
       <head>
-        <title>
-          Techwind - Tailwind CSS Multipurpose Landing & Admin Dashboard
-          Template
-        </title>
+        <title>OneStopShop</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -41,8 +38,6 @@ const Layout = () => {
         <meta name="email" content="support@shreethemes.in" />
         <meta name="version" content="2.0.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-        <link rel="shortcut icon" href="../assets/images/favicon.ico" />
 
         <link
           href="../assets/libs/tiny-slider/tiny-slider.css"
