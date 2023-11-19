@@ -3,17 +3,22 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../../models/Product";
 import { baseUrl } from "../../api/url.contants";
+import Spinner from "../../layout/Spinner";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState<Product>({});
+  const [loading, setLoading] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
     axios
       .get<Product>(`${baseUrl}Product?id=${id}`)
       .then((response) => setProduct(response.data));
+    setLoading(true);
   }, [id, product]);
 
+  if (!loading) return <Spinner />;
   // function handleAddItem(productId: number) {
   //   setLoading(true);
   //   agent.Cart.addItem(productId)
@@ -31,36 +36,44 @@ export default function ProductDetail() {
   //     .finally(() => setLoading(false));
   // }
 
+  const decrement = () => {
+    if (quantity > 0) setQuantity(quantity - 1);
+  };
+
+  const increment = () => {
+    if (quantity < product.stock) setQuantity(quantity + 1);
+  };
+
+  const addBasket = () => {};
+
   return (
     <>
-      <section className="relative table w-full py-20 lg:py-24 bg-gray-50 dark:bg-slate-800">
-        <div className="container relative">
+      <section className="relative table w-full py-8 lg:py-8 bg-gray-50 dark:bg-slate-800">
+        <img
+          src="../../assets/images/productdetail.jpg"
+          className="w-full object-cover max-h-96 object-left-bottom "
+        />
+        <div className="container absolute top-40 left-20">
           <div className="grid grid-cols-1 mt-14">
             <h3 className="text-3xl leading-normal font-semibold">
-              Product / Item Detail
+              Product Detail
             </h3>
           </div>
 
           <div className="relative mt-3">
             <ul className="tracking-[0.5px] mb-0 inline-block">
               <li className="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out hover:text-indigo-600">
-                <a href="index-shop.html">Techwind</a>
+                <a href="index-shop.html">Buy whatever you want :)</a>
               </li>
               <li className="inline-block text-base text-slate-950 dark:text-white mx-0.5 ltr:rotate-0 rtl:rotate-180">
                 <i className="uil uil-angle-right-b"></i>
-              </li>
-              <li
-                className="inline-block uppercase text-[13px] font-bold text-indigo-600"
-                aria-current="page"
-              >
-                Item Detail
               </li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section className="relative md:py-24 py-16">
+      <section className="relative md:py-8 py-16">
         <div className="container">
           <div className="grid md:grid-cols-12 grid-cols-1 gap-[30px] items-center">
             <div className="lg:col-span-5 md:col-span-6">
@@ -132,75 +145,37 @@ export default function ProductDetail() {
                     <li className="inline">
                       <i className="mdi mdi-star text-lg"></i>
                     </li>
-                    <li className="inline text-slate-400 font-semibold">
+                    {/* <li className="inline text-slate-400 font-semibold">
                       4.8 (45)
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
 
                 <div className="mt-4">
-                  <h5 className="text-lg font-semibold">Overview :</h5>
-                  <p className="text-slate-400 mt-2">{product.description}</p>
+                  <h5 className="text-lg font-semibold">
+                    Overview :{" "}
+                    <span className="text-slate-400 mt-2">{product.name}</span>
+                  </h5>
 
-                  <ul className="list-none text-slate-400 mt-4">
-                    <li className="mb-1 flex">
-                      <i className="uil uil-check-circle text-indigo-600 text-xl me-2"></i>{" "}
-                      Digital Marketing Solutions for Tomorrow
-                    </li>
-                    <li className="mb-1 flex">
-                      <i className="uil uil-check-circle text-indigo-600 text-xl me-2"></i>{" "}
-                      Our Talented & Experienced Marketing Agency
-                    </li>
-                    <li className="mb-1 flex">
-                      <i className="uil uil-check-circle text-indigo-600 text-xl me-2"></i>{" "}
-                      Create your own skin to match your brand
-                    </li>
-                  </ul>
+                  <p className=" text-slate-400 mt-4">{product.description}</p>
                 </div>
 
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-[30px] mt-4">
-                  <div className="flex items-center">
-                    <h5 className="text-lg font-semibold me-2">Size:</h5>
-                    <div className="">
-                      <a
-                        href="#"
-                        className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white"
-                      >
-                        S
-                      </a>
-                      <a
-                        href="#"
-                        className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white"
-                      >
-                        M
-                      </a>
-                      <a
-                        href="#"
-                        className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white"
-                      >
-                        L
-                      </a>
-                      <a
-                        href="#"
-                        className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white"
-                      >
-                        XL
-                      </a>
-                    </div>
-                  </div>
-
                   <div className="justify-between">
                     <button
-                      //onClick={() => handleRemoveItem(pro.productId)}
+                      onClick={decrement}
                       className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white minus"
                     >
                       -
                     </button>
-                    <span className="h-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white pointer-events-none w-16 ps-4 quantity">
-                      1
-                    </span>
+                    <input
+                      type="text"
+                      value={quantity}
+                      className="h-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white pointer-events-none w-16 ps-4 quantity"
+                    />
+
                     <button
-                      //onClick={() => handleAddItem(item.productId)} //() => setQuantity((a) => a + 1)
+                      onClick={increment} //() => setQuantity((a) => a + 1)
                       className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white plus"
                     >
                       +
@@ -210,18 +185,18 @@ export default function ProductDetail() {
 
                 <div className="mt-4">
                   <a
-                    href="#"
+                    href="/cart"
                     className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md me-2 mt-2"
                   >
                     Buy Now
                   </a>
 
-                  <a
-                    href="#"
+                  <div
+                    onClick={addBasket}
                     className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white mt-2"
                   >
                     Add to Cart
-                  </a>
+                  </div>
                   {/* {item ? (
                     <a
                       href="#"
@@ -244,54 +219,22 @@ export default function ProductDetail() {
 
           <div className="grid md:grid-cols-12 grid-cols-1 mt-10 gap-[30px]">
             <div className="lg:col-span-3 md:col-span-5">
-              <div className="sticky top-20">
-                <ul
-                  className="flex-column p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-md"
-                  id="myTab"
-                  data-tabs-toggle="#myTabContent"
-                  role="tablist"
+              <p
+                role="presentation"
+                className="flex-column p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-md"
+              >
+                <button
+                  className="px-4 py-2 text-start text-base font-semibold rounded-md w-full hover:text-indigo-600 duration-500"
+                  id="description-tab"
+                  data-tabs-target="#description"
+                  type="button"
+                  role="tab"
+                  aria-controls="description"
+                  aria-selected="true"
                 >
-                  <li role="presentation">
-                    <button
-                      className="px-4 py-2 text-start text-base font-semibold rounded-md w-full hover:text-indigo-600 duration-500"
-                      id="description-tab"
-                      data-tabs-target="#description"
-                      type="button"
-                      role="tab"
-                      aria-controls="description"
-                      aria-selected="true"
-                    >
-                      Description
-                    </button>
-                  </li>
-                  <li role="presentation">
-                    <button
-                      className="px-4 py-2 text-start text-base font-semibold rounded-md w-full mt-3 duration-500"
-                      id="addinfo-tab"
-                      data-tabs-target="#addinfo"
-                      type="button"
-                      role="tab"
-                      aria-controls="addinfo"
-                      aria-selected="false"
-                    >
-                      Additional Information
-                    </button>
-                  </li>
-                  <li role="presentation">
-                    <button
-                      className="px-4 py-2 text-start text-base font-semibold rounded-md w-full mt-3 duration-500"
-                      id="review-tab"
-                      data-tabs-target="#review"
-                      type="button"
-                      role="tab"
-                      aria-controls="review"
-                      aria-selected="false"
-                    >
-                      Review
-                    </button>
-                  </li>
-                </ul>
-              </div>
+                  Description
+                </button>
+              </p>
             </div>
 
             <div className="lg:col-span-9 md:col-span-7">
@@ -305,18 +248,7 @@ export default function ProductDetail() {
                   role="tabpanel"
                   aria-labelledby="profile-tab"
                 >
-                  <p className="text-slate-400">
-                    Due to its widespread use as filler text for layouts,
-                    non-readability is of great importance: human perception is
-                    tuned to recognize certain patterns and repetitions in
-                    texts. If the distribution of letters and 'words' is random,
-                    the reader will not be distracted from making a neutral
-                    judgement on the visual impact and readability of the
-                    typefaces (typography), or the distribution of text on the
-                    page (layout or type area). For this reason, dummy text
-                    usually consists of a more or less random series of words or
-                    syllables.
-                  </p>
+                  <p className="text-slate-400">{product.description}</p>
                 </div>
 
                 <div
@@ -338,13 +270,7 @@ export default function ProductDetail() {
                         <td className="font-semibold py-4">Material</td>
                         <td className="text-slate-400 py-4">Cotton</td>
                       </tr>
-
-                      <tr className="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-gray-700">
-                        <td className="font-semibold py-4">Size</td>
-                        <td className="text-slate-400 py-4">
-                          S, M, L, XL, XXL
-                        </td>
-                      </tr>
+                      <tr className="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-gray-700"></tr>
                     </tbody>
                   </table>
                 </div>
@@ -598,9 +524,7 @@ export default function ProductDetail() {
                       <div className="grid lg:grid-cols-12 lg:gap-6">
                         <div className="lg:col-span-6 mb-5">
                           <div className="text-start">
-                            <label for="name" className="font-semibold">
-                              Your Name:
-                            </label>
+                            <label className="font-semibold">Your Name:</label>
                             <div className="form-icon relative mt-2">
                               <i
                                 data-feather="user"
@@ -619,9 +543,7 @@ export default function ProductDetail() {
 
                         <div className="lg:col-span-6 mb-5">
                           <div className="text-start">
-                            <label for="email" className="font-semibold">
-                              Your Email:
-                            </label>
+                            <label className="font-semibold">Your Email:</label>
                             <div className="form-icon relative mt-2">
                               <i
                                 data-feather="mail"
@@ -642,7 +564,7 @@ export default function ProductDetail() {
                       <div className="grid grid-cols-1">
                         <div className="mb-5">
                           <div className="text-start">
-                            <label for="comments" className="font-semibold">
+                            <label className="font-semibold">
                               Your Comment:
                             </label>
                             <div className="form-icon relative mt-2">
@@ -972,69 +894,6 @@ export default function ProductDetail() {
                       <i className="mdi mdi-star"></i>
                     </li>
                   </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="container relative mt-16">
-          <div className="grid md:grid-cols-12 grid-cols-1 items-center">
-            <div className="lg:col-span-5 md:col-span-6">
-              <img
-                src="assets/images/illustrator/envelope.svg"
-                className="mx-auto d-block"
-                alt=""
-              />
-            </div>
-
-            <div className="lg:col-span-7 md:col-span-6">
-              <span className="bg-indigo-600/5 text-indigo-600 text-xs font-bold px-2.5 py-0.5 rounded h-5">
-                Mobile Apps
-              </span>
-              <h4 className="md:text-3xl text-2xl lg:leading-normal leading-normal font-medium my-4">
-                Available for your <br /> Smartphones
-              </h4>
-              <p className="text-slate-400 max-w-xl mb-0">
-                Search all the open positions on the web. Get your own
-                personalized salary estimate. Read reviews on over 30000+
-                companies worldwide.
-              </p>
-              <div className="my-5">
-                <a href="#">
-                  <img
-                    src="assets/images/app/app.png"
-                    className="m-1 inline-block"
-                    alt=""
-                  />
-                </a>
-
-                <a href="#">
-                  <img
-                    src="assets/images/app/playstore.png"
-                    className="m-1 inline-block"
-                    alt=""
-                  />
-                </a>
-              </div>
-
-              <div className="inline-block">
-                <div className="pt-4 flex items-center border-t border-gray-100 dark:border-gray-700">
-                  <i
-                    data-feather="smartphone"
-                    className="me-2 text-indigo-600 h-10 w-10"
-                  ></i>
-                  <div className="content">
-                    <h6 className="text-base font-medium">
-                      Install app now on your cellphones
-                    </h6>
-                    <a
-                      href="#"
-                      className="relative inline-block font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:duration-500 text-indigo-600 hover:text-indigo-600 after:bg-indigo-600 duration-500 ease-in-out"
-                    >
-                      Learn More <i className="uil uil-angle-right-b"></i>
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>

@@ -25,7 +25,10 @@ import AdminPage from "../pages/dashboard/AdminPage";
 import SystemLogsPage from "../pages/dashboard/SystemLogsPage";
 import OwnerPage from "../pages/dashboard/OwnerPage";
 import NotFoundPage from "../pages/public/NotFoundPage";
-import Catalog from "../pages/public/CatalogPage";
+import CatalogPage from "../pages/public/CatalogPage";
+import AboutPage from "../pages/public/AboutPage";
+import ProductDetail from "../pages/public/ProductDetail";
+import CartPage from "../pages/public/CartPage";
 
 const GlobalRouter = () => {
   return (
@@ -37,7 +40,10 @@ const GlobalRouter = () => {
         <Route path={PATH_PUBLIC.register} element={<RegisterPage />} />
         <Route path={PATH_PUBLIC.login} element={<LoginPage />} />
         <Route path={PATH_PUBLIC.unauthorized} element={<UnauthorizedPage />} />
-        <Route path={PATH_PUBLIC.catalog} element={<Catalog />} />
+        <Route path={PATH_PUBLIC.catalog} element={<CatalogPage />} />
+        <Route path={PATH_PUBLIC.about} element={<AboutPage />} />
+        <Route path={PATH_PUBLIC.productDetail} element={<ProductDetail />} />
+        <Route path={PATH_PUBLIC.cart} element={<CartPage />} />
 
         {/* Protected routes -------------------------------------------------- */}
         <Route element={<AuthGuard roles={allAccessRoles} />}>

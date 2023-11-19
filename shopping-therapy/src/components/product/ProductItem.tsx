@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Product } from "../../models/Product";
+import agent from "../../api/agent";
 
 interface ProductItemProps {
   product: Product;
@@ -7,6 +8,15 @@ interface ProductItemProps {
 
 export default function ProductItem({ product }: ProductItemProps) {
   const navigate = useNavigate();
+
+  const addCartItemAsync = ({ productId, quantity = 1 }) => {
+    try {
+      return agent.Cart.createCart(productId, quantity);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div
       onClick={() => navigate(`/catalog/${product.productId}`)}
@@ -16,12 +26,13 @@ export default function ProductItem({ product }: ProductItemProps) {
         <img src={product.image} alt="" />
 
         <div className="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
-          <a
-            href="shop-cart.html"
+          <NavLink
+            to={"/cart"}
             className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-slate-900 border-slate-900 text-white w-full rounded-md"
+            onClick={() => addCartItemAsync({ productId: product.productId! })}
           >
             Add to Cart
-          </a>
+          </NavLink>
         </div>
 
         <ul className="list-none absolute top-[10px] end-4 opacity-0 group-hover:opacity-100 duration-500">

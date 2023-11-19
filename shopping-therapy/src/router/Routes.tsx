@@ -31,7 +31,9 @@ export const PATH_PUBLIC = {
   unauthorized: "/unauthorized",
   notFound: "/404",
   catalog: "/catalog",
+  about: "/about",
   productDetail: "/catalog/:id",
+  cart: "/cart",
 };
 
 export const PATH_DASHBOARD = {
