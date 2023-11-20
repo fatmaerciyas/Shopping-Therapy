@@ -34,6 +34,8 @@ export const PATH_PUBLIC = {
   about: "/about",
   productDetail: "/catalog/:id",
   cart: "/cart",
+  checkout: "/checkout",
+  thankyou: "/thankyou",
 };
 
 export const PATH_DASHBOARD = {

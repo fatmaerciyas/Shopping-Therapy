@@ -64,16 +64,22 @@ const Category = {
 const Cart = {
   createCart: (productId: number, quantity = 1) =>
     requests.post(`Cart?productId=${productId}&quantity=${quantity}`, {}),
-  updateCart: (productId: number, quantity = 1) =>
-    requests.post(`Cart?productId=${productId}&quantity=${quantity}`, {}),
   deleteCart: (productId: number, quantity = 1) =>
     requests.delete(`Cart?productId=${productId}&quantity=${quantity}`),
 };
+
+// const Order = {
+//   createCart: (cartId: number, quantity = 1) =>
+//     requests.post(`Cart?productId=${productId}&quantity=${quantity}`, {}),
+//   deleteCart: (productId: number, quantity = 1) =>
+//     requests.delete(`Cart?productId=${productId}&quantity=${quantity}`),
+// };
 
 const agent = {
   Product,
   Category,
   Cart,
+  // Order,
 };
 
 export default agent;

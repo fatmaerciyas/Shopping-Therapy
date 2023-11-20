@@ -34,23 +34,23 @@ export default function Header() {
 
           <ul className="buy-button list-none mb-0 ">
             <li className="dropdown inline-block mr-4 relative">
-              <button
-                data-dropdown-toggle="dropdown"
+              <Link
+                to="/cart"
                 className="dropdown-toggle h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border border-indigo-600 hover:border-indigo-700 text-white"
                 type="button"
               >
                 <AiOutlineShoppingCart />
-              </button>
+              </Link>
             </li>
 
             <li className=" inline-block ">
-              <button
-                data-dropdown-toggle="dropdown"
+              <Link
+                to={isAuthenticated ? "/dashboard" : "/login"}
                 className="dropdown-toggle h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border border-indigo-600 hover:border-indigo-700 text-white"
                 type="button"
               >
                 <AiOutlineUser />
-              </button>
+              </Link>
             </li>
           </ul>
 

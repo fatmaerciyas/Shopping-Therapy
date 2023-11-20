@@ -77,7 +77,7 @@ const Layout = () => {
       <body className="font-nunito text-base text-black dark:text-white ">
         {isAuthenticated ? (
           <>
-            <div className="flex flex-row container ">
+            <div className="flex flex-col  ">
               {sideBarRenderer()}
               <Outlet />
             </div>

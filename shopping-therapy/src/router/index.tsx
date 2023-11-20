@@ -29,6 +29,8 @@ import CatalogPage from "../pages/public/CatalogPage";
 import AboutPage from "../pages/public/AboutPage";
 import ProductDetail from "../pages/public/ProductDetail";
 import CartPage from "../pages/public/CartPage";
+import CheckoutPage from "../pages/public/CheckoutPage";
+import ThankYouPage from "../pages/public/ThankYouPage";
 
 const GlobalRouter = () => {
   return (
@@ -44,6 +46,8 @@ const GlobalRouter = () => {
         <Route path={PATH_PUBLIC.about} element={<AboutPage />} />
         <Route path={PATH_PUBLIC.productDetail} element={<ProductDetail />} />
         <Route path={PATH_PUBLIC.cart} element={<CartPage />} />
+        <Route path={PATH_PUBLIC.checkout} element={<CheckoutPage />} />
+        <Route path={PATH_PUBLIC.thankyou} element={<ThankYouPage />} />
 
         {/* Protected routes -------------------------------------------------- */}
         <Route element={<AuthGuard roles={allAccessRoles} />}>

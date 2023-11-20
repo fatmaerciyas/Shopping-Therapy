@@ -54,7 +54,6 @@ const LoginPage = () => {
   return (
     <div className="pageTemplate1 flex flex-row  bg-[#f0ecf7] gap-4  py-24 ">
       {/* <div>Left</div> */}
-      {/* <div>Left</div> */}
       <div className="max-sm:hidden ml-20 mt-40 rounded-md flex-1 min-h-[500px] h-3/5 bg-gradient-to-tr from-[#DAC6FB] via-amber-400 to-[#AAC1F6] flex flex-col justify-center items-center rounded-l-2xl">
         <h1 className="text-6xl font-bold text-[#754eb4]">Login</h1>
         <div className="h-3/5 w-3/5 p-6 rounded-2xl flex flex-col gap-8 justify-center items-start  relative">

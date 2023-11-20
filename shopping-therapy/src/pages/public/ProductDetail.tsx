@@ -4,47 +4,31 @@ import axios from "axios";
 import { Product } from "../../models/Product";
 import { baseUrl } from "../../api/url.contants";
 import Spinner from "../../layout/Spinner";
+import agent from "../../api/agent";
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const [product, setProduct] = useState<Product>({});
+  const [product, setProduct] = useState<Product>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [quantity, setQuantity] = useState(0);
+  //const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
     axios
       .get<Product>(`${baseUrl}Product?id=${id}`)
       .then((response) => setProduct(response.data));
     setLoading(true);
+    console.log(product?.productId);
   }, [id, product]);
 
   if (!loading) return <Spinner />;
-  // function handleAddItem(productId: number) {
-  //   setLoading(true);
-  //   agent.Cart.addItem(productId)
-  //     .then((cart) => dispatch(setCart(cart)))
-  //     .catch((error) => console.log(error))
-  //     .finally(() => setLoading(false));
-  //   console.log(item);
-  // }
 
-  // function handleRemoveItem(productId: number, quantity = 1) {
-  //   setLoading(true);
-  //   agent.Cart.removeItem(productId, quantity)
-  //     .then(() => dispatch(removeCartItemAsync({ productId, quantity })))
-  //     .catch((error) => console.log(error))
-  //     .finally(() => setLoading(false));
-  // }
-
-  const decrement = () => {
-    if (quantity > 0) setQuantity(quantity - 1);
+  const addCartItemAsync = ({ productId, quantity = 1 }) => {
+    try {
+      return agent.Cart.createCart(productId, quantity);
+    } catch (err) {
+      console.log(err);
+    }
   };
-
-  const increment = () => {
-    if (quantity < product.stock) setQuantity(quantity + 1);
-  };
-
-  const addBasket = () => {};
 
   return (
     <>
@@ -160,58 +144,31 @@ export default function ProductDetail() {
                   <p className=" text-slate-400 mt-4">{product.description}</p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 grid-cols-1 gap-[30px] mt-4">
-                  <div className="justify-between">
-                    <button
-                      onClick={decrement}
-                      className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white minus"
-                    >
-                      -
-                    </button>
-                    <input
-                      type="text"
-                      value={quantity}
-                      className="h-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white pointer-events-none w-16 ps-4 quantity"
-                    />
-
-                    <button
-                      onClick={increment} //() => setQuantity((a) => a + 1)
-                      className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white plus"
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-
                 <div className="mt-4">
-                  <a
-                    href="/cart"
+                  <NavLink
+                    to={"/cart"}
                     className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md me-2 mt-2"
+                    onClick={() =>
+                      addCartItemAsync({
+                        productId: product.productId!,
+                        quantity: 1,
+                      })
+                    }
                   >
                     Buy Now
-                  </a>
+                  </NavLink>
 
-                  <div
-                    onClick={addBasket}
+                  <button
                     className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white mt-2"
+                    onClick={() =>
+                      addCartItemAsync({
+                        productId: product.productId!,
+                        quantity: 1,
+                      })
+                    }
                   >
                     Add to Cart
-                  </div>
-                  {/* {item ? (
-                    <a
-                      href="#"
-                      className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md me-2 mt-2"
-                    >
-                      Buy Now
-                    </a>
-                  ) : (
-                    <a
-                      href="#"
-                      className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white mt-2"
-                    >
-                      Add to Cart
-                    </a>
-                  )} */}
+                  </button>
                 </div>
               </div>
             </div>

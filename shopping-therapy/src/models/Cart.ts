@@ -1,16 +1,19 @@
 export interface Cart {
-  id: number;
-  buyerId: string;
-  items: CartItem[];
+  cartId: number;
+  quantity: number;
+  productId: number;
+  product: Product;
 }
 
-export interface CartItem {
+export interface Product {
   productId: number;
   name: string;
-  price: number;
-  pictureUrl: string;
-  brand: string;
-  type: string;
+  description: string;
   image: string;
+  stock: number;
+  price: number;
+  brand: string;
   quantity: number;
+  categoryId: number;
+  category: any;
 }

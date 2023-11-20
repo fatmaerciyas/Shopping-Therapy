@@ -82,14 +82,10 @@ export default function ProductListing({
 
             return (
               <>
-                <ProductItem product={product} key={productId} />
-                {/* <button onClick={() => redirectToEditPage(productId!.toString())}>
-              Edit
-            </button>
-            <br />
-            <button onClick={() => redirectToDeletePage(productId!.toString())}>
-              Delete
-            </button> */}
+                {products &&
+                  products.map((product) => (
+                    <ProductItem product={product} key={productId} />
+                  ))}
               </>
             );
           })}
