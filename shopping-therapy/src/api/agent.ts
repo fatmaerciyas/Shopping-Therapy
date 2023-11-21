@@ -68,18 +68,19 @@ const Cart = {
     requests.delete(`Cart?productId=${productId}&quantity=${quantity}`),
 };
 
-// const Order = {
-//   createCart: (cartId: number, quantity = 1) =>
-//     requests.post(`Cart?productId=${productId}&quantity=${quantity}`, {}),
-//   deleteCart: (productId: number, quantity = 1) =>
-//     requests.delete(`Cart?productId=${productId}&quantity=${quantity}`),
-// };
+const Order = {
+  createOrder: (cartId: number, username: string) =>
+    requests.post(`Order?cartId=${cartId}&userName=${username}`, {}),
+  deleteOrder: (productId: number, quantity = 1) =>
+    requests.delete(`Cart?productId=${productId}&quantity=${quantity}`),
+};
 
+//Order?cartId=6&userName=user
 const agent = {
   Product,
   Category,
   Cart,
-  // Order,
+  Order,
 };
 
 export default agent;

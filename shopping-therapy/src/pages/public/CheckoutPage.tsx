@@ -1,16 +1,54 @@
-import YourCart from "../../components/cart/YourCart";
+import axios from "axios";
+//import agent from "../../api/agent";
 import useAuth from "../../hooks/useAuth.hook";
+import { Cart } from "../../models/Cart";
 import LoginWarningPage from "./LoginWarningPage";
-//import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { baseUrl } from "../../api/url.contants";
+import Spinner from "../../layout/Spinner";
+import { Order } from "../../models/Order";
+import agent from "../../api/agent";
 
 export default function CheckoutPage() {
-  const { isAuthenticated } = useAuth();
-  // const [order, setOrder] = useState();
+  const { isAuthenticated, user } = useAuth();
+  const [order, setOrder] = useState<Order[]>([]);
+  const [cart, setCart] = useState<Cart[]>([]);
+
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [subtotal, setSubtotal] = useState(0);
+
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+
+    cart.forEach((cartItem) => {
+      totalPrice += cartItem.product.price * cartItem.quantity;
+    });
+
+    return totalPrice;
+  };
+
+  useEffect(() => {
+    async function fetchdata() {
+      const response = await axios.get<Cart[]>(baseUrl + "Cart");
+      setCart(response.data);
+      setSubtotal(calculateTotalPrice());
+
+      setIsLoaded(true);
+    }
+    fetchdata();
+  }, [cart, calculateTotalPrice]);
 
   // //onclick setorder navigate to thank you
 
-  // useEffect(() => {}, []);
+  async function addOrder() {
+    console.log(
+      cart.map((cartItem) =>
+        agent.Order.createOrder(cartItem.cartId, user?.userName)
+      )
+    );
+  }
 
+  if (!isLoaded) return <Spinner />;
   if (isAuthenticated) {
     return (
       <>
@@ -43,7 +81,7 @@ export default function CheckoutPage() {
                           </label>
                           <input
                             type="text"
-                            className="form-input w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 mt-2"
+                            className="form-input w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-gray-500 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 mt-2"
                             placeholder="Name:"
                             id="accountname"
                             name="name"
@@ -94,7 +132,7 @@ export default function CheckoutPage() {
                   </form>
                   <div className="mt-4">
                     <button
-                      // onClick={addOrder}
+                      onClick={addOrder}
                       className="py-2 px-5 inline-block tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md w-full"
                     >
                       Buy Now
@@ -102,8 +140,49 @@ export default function CheckoutPage() {
                   </div>
                 </div>
               </div>
+              <div className="lg:col-span-4">
+                <div className="p-6 rounded-md shadow dark:shadow-gray-800">
+                  <div className="flex justify-between items-center">
+                    <h5 className="text-lg font-semibold">Your Cart</h5>
+                  </div>
+                  <div className="mt-4 rounded-md shadow dark:shadow-gray-800">
+                    {/* //map */}
+                    {cart.map((cartItem) => (
+                      <div className="p-3 flex justify-between items-center border border-gray-100 dark:border-gray-800">
+                        <div>
+                          <h5 className="font-semibold">
+                            {cartItem.product.name}
+                          </h5>
+                          <p className="text-sm text-slate-400">
+                            {cartItem.product.brand}
+                          </p>
+                        </div>
 
-              <YourCart />
+                        <p className="text-slate-400 font-semibold">
+                          $ {cartItem.product.price}
+                        </p>
+                      </div>
+                    ))}
+                    {/* map */}
+                    <div className="p-3 flex justify-between items-center border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-slate-800 text-green-600">
+                      <div>
+                        <h5 className="font-semibold">Free Cargo</h5>
+                        <p className="text-sm text-green-600">discount</p>
+                      </div>
+
+                      <p className="text-red-600 font-semibold">-$ 29.99</p>
+                    </div>
+
+                    <div className="p-3 flex justify-between items-center border border-gray-100 dark:border-gray-800">
+                      <div>
+                        <h5 className="font-semibold">Total (USD)</h5>
+                      </div>
+
+                      <p className="font-semibold">$ {subtotal}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
