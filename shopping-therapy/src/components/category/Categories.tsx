@@ -3,6 +3,8 @@ import axios from "axios";
 import { Product } from "../../models/Product";
 import { Category } from "../../models/Category";
 
+let count = true;
+
 interface CategoriesItems {
   isLoaded: boolean;
   categories: Category[];
@@ -15,6 +17,8 @@ export default function Categories({
   isLoaded,
 }: CategoriesItems) {
   function handleGetFiterByCategory(categoryId: string) {
+    console.log(`category Id is : ${categoryId}`);
+
     axios
       .get<Product[]>(baseUrl + `Product?categoryId=${categoryId}`)
       .then((response) => {
@@ -23,6 +27,15 @@ export default function Categories({
       });
   }
 
+  if (count) {
+    axios
+      .get<Product[]>(baseUrl + `Product?categoryId=${1}`)
+      .then((response) => {
+        setProducts(response.data);
+        console.log(response.data);
+      });
+    count = false;
+  }
   return (
     <>
       <div>

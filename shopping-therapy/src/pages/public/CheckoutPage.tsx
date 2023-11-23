@@ -6,16 +6,17 @@ import LoginWarningPage from "./LoginWarningPage";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../api/url.contants";
 import Spinner from "../../layout/Spinner";
-import { Order } from "../../models/Order";
 import agent from "../../api/agent";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutPage() {
   const { isAuthenticated, user } = useAuth();
-  const [order, setOrder] = useState<Order[]>([]);
   const [cart, setCart] = useState<Cart[]>([]);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [subtotal, setSubtotal] = useState(0);
+
+  const navigate = useNavigate();
 
   const calculateTotalPrice = () => {
     let totalPrice = 0;
@@ -38,14 +39,10 @@ export default function CheckoutPage() {
     fetchdata();
   }, [cart, calculateTotalPrice]);
 
-  // //onclick setorder navigate to thank you
-
   async function addOrder() {
-    console.log(
-      cart.map((cartItem) =>
-        agent.Order.createOrder(cartItem.cartId, user?.userName)
-      )
-    );
+    console.log(user?.userName);
+    agent.Basket.createBasket(user?.userName);
+    navigate("/thankyou");
   }
 
   if (!isLoaded) return <Spinner />;
@@ -153,6 +150,7 @@ export default function CheckoutPage() {
                           <h5 className="font-semibold">
                             {cartItem.product.name}
                           </h5>
+
                           <p className="text-sm text-slate-400">
                             {cartItem.product.brand}
                           </p>

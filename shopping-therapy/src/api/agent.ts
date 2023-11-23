@@ -68,11 +68,9 @@ const Cart = {
     requests.delete(`Cart?productId=${productId}&quantity=${quantity}`),
 };
 
-const Order = {
-  createOrder: (cartId: number, username: string) =>
-    requests.post(`Order?cartId=${cartId}&userName=${username}`, {}),
-  deleteOrder: (productId: number, quantity = 1) =>
-    requests.delete(`Cart?productId=${productId}&quantity=${quantity}`),
+const Basket = {
+  createBasket: (username: string) =>
+    requests.post(`Basket?userName=${username}`, {}),
 };
 
 //Order?cartId=6&userName=user
@@ -80,7 +78,7 @@ const agent = {
   Product,
   Category,
   Cart,
-  Order,
+  Basket,
 };
 
 export default agent;
