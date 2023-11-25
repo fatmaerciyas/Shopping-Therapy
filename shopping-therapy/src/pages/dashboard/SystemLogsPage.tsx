@@ -37,7 +37,7 @@ const SystemLogsPage = () => {
   }
 
   return (
-    <div className="text-center w-full content-end justify-center mt-20">
+    <div className="text-center w-full container content-end justify-center mt-20">
       {" "}
       <h1 className="text-2xl font-bold">System Logs</h1>
       <div className="pageTemplate3 items-stretch">

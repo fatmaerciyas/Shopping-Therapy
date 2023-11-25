@@ -1,4 +1,8 @@
-export interface Cart {
+export interface IBasket {
+  basketId: number;
+  userName: string;
+}
+export interface Basket extends IBasket {
   cartId: number;
   quantity: number;
   productId: number;

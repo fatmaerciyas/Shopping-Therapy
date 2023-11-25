@@ -139,7 +139,7 @@ export default function Sidebar() {
               </a>
 
               <a
-                onClick={() => handleClick(PATH_DASHBOARD.allMessages)}
+                onClick={() => handleClick(PATH_DASHBOARD.orders)}
                 className="flex h-11 w-11  text-blue-700 items-center justify-center rounded-lg outline-none transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
               >
                 <svg
@@ -214,30 +214,6 @@ export default function Sidebar() {
                 </svg>
               </a>
               <hr />
-              <Button
-                label="Owner"
-                onClick={() => handleClick(PATH_DASHBOARD.owner)}
-                type="button"
-                variant="secondary"
-              />
-              <Button
-                label="Admin"
-                onClick={() => handleClick(PATH_DASHBOARD.admin)}
-                type="button"
-                variant="secondary"
-              />
-              <Button
-                label="Manager"
-                onClick={() => handleClick(PATH_DASHBOARD.manager)}
-                type="button"
-                variant="secondary"
-              />
-              <Button
-                label="User Page"
-                onClick={() => handleClick(PATH_DASHBOARD.user)}
-                type="button"
-                variant="secondary"
-              />
             </div>
 
             <div className="flex flex-col items-center space-y-3 py-3">

@@ -31,6 +31,10 @@ import ProductDetail from "../pages/public/ProductDetail";
 import CartPage from "../pages/public/CartPage";
 import CheckoutPage from "../pages/public/CheckoutPage";
 import ContactPage from "../pages/public/ContactPage";
+import MySendboxPage from "../pages/dashboard/MySendboxPage";
+import MessageDetail from "../pages/dashboard/MessageDetail";
+import Order from "../pages/dashboard/Order";
+import OrderDetail from "../pages/dashboard/OrderDetail";
 
 const GlobalRouter = () => {
   return (
@@ -55,8 +59,17 @@ const GlobalRouter = () => {
 
           <Route
             path={PATH_DASHBOARD.sendMessage}
+            element={<MySendboxPage />}
+          />
+          <Route
+            path={PATH_DASHBOARD.createMessage}
             element={<SendMessagePage />}
           />
+          <Route
+            path={PATH_DASHBOARD.messageDetail}
+            element={<MessageDetail />}
+          />
+          <Route path={PATH_DASHBOARD.orderDetail} element={<OrderDetail />} />
           <Route path={PATH_DASHBOARD.inbox} element={<InboxPage />} />
           <Route path={PATH_DASHBOARD.myLogs} element={<MyLogsPage />} />
           <Route path={PATH_DASHBOARD.user} element={<UserPage />} />
@@ -73,10 +86,7 @@ const GlobalRouter = () => {
             path={PATH_DASHBOARD.updateRole}
             element={<UpdateRolePage />}
           />
-          <Route
-            path={PATH_DASHBOARD.allMessages}
-            element={<AllMessagesPage />}
-          />
+          <Route path={PATH_DASHBOARD.orders} element={<Order />} />
           <Route
             path={PATH_DASHBOARD.systemLogs}
             element={<SystemLogsPage />}

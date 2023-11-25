@@ -43,8 +43,10 @@ export const PATH_DASHBOARD = {
   dashboard: "/dashboard",
   usersManagement: "/dashboard/users-management",
   updateRole: "/dashboard/update-role/:userName",
+  createMessage: "/dashboard/create-message",
   sendMessage: "/dashboard/send-message",
   inbox: "/dashboard/inbox",
+  messageDetail: "/dashboard/message-detail/:id",
   allMessages: "/dashboard/all-messages",
   systemLogs: "/dashboard/system-logs",
   myLogs: "/dashboard/my-logs",
@@ -52,4 +54,6 @@ export const PATH_DASHBOARD = {
   admin: "/dashboard/admin",
   manager: "/dashboard/manager",
   user: "/dashboard/user",
+  orders: "/dashboard/order",
+  orderDetail: "/dashboard/order/:id",
 };

@@ -25,6 +25,7 @@ export interface IAuthUser {
   email: string;
   createdAt: string;
   roles: string[];
+  image: string;
 }
 
 export interface ILoginResponseDto {

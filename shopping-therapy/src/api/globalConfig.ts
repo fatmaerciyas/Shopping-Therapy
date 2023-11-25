@@ -9,7 +9,10 @@ export const UPDATE_ROLE_URL = "/Auth/update-role";
 export const USERNAMES_LIST_URL = "/Auth/usernames";
 export const ALL_MESSAGES_URL = "/Message";
 export const CREATE_MESSAGE_URL = "/Message/create";
-export const MY_MESSAGE_URL = "/Message/mine";
+export const MY_SENDBOX_MESSAGE_URL = "/Message/sendbox";
+export const MY_INBOX_MESSAGE_URL = "/Message/inbox";
+export const MY_ORDERS = "/Cart/getbyuser";
+
 export const LOGS_URL = "/Logs";
 export const MY_LOGS_URL = "/Logs/mine";
 

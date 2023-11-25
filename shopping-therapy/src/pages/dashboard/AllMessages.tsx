@@ -54,8 +54,8 @@ const AllMessagesPage = () => {
             <span>{moment(item.createdAt).fromNow()}</span>
             <span>{item.subject}</span>
             <span className="col-span-5">{item.details}</span>
-            <span>{item.senderUserName}</span>
-            <span>{item.receiverUserName}</span>
+            <span>{item.sender}</span>
+            <span>{item.receiver}</span>
           </div>
         ))}
       </div>

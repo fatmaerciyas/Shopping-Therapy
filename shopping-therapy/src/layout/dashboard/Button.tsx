@@ -15,16 +15,16 @@ export default function Button({
   disabled,
 }: IProps) {
   const primaryClasses =
-    "text-[#754eb4] bg-[#754eb4] border-[#754eb4] hover:shadow-[0_0_5px_5px_#754eb44c]";
+    "text-primary bg-primary/10 border-[#754eb4] hover:shadow-[0_0_5px_5px_#754eb44c]";
 
   const secondaryClasses =
-    "text-[#754eb4] bg-amber-400 border-amber-400 hover:shadow-[0_0_5px_5px_#fbbe2465]";
+    "bg-info/10 text-info border-amber-400 hover:shadow-[0_0_5px_5px_#fbbe2465]";
 
   const dangerClasses =
-    "text-[#754eb4] bg-[#AE899A] border-[#AE899A] hover:shadow-[0_0_5px_5px_#ae899a70]";
+    "bg-warning/10 text-warningborder-[#AE899A] hover:shadow-[0_0_5px_5px_#ae899a70]";
 
   const lightClasses =
-    "text-[#754eb4] border-[#754eb4] hover:shadow-[0_0_5px_5px_#754eb44c]";
+    "bg-success/10 text-success hover:shadow-[0_0_5px_5px_#754eb44c]";
 
   const classNameCreator = (): string => {
     let finalClassName =

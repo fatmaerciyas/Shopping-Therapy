@@ -16,7 +16,9 @@ const UsernamesComboBox = ({ usernames, control, name, error }: IProps) => {
     if (error) {
       return <span className="text-red-600 font-semibold">{error}</span>;
     }
-    return <label className="font-semibold">To</label>;
+    return (
+      <span className="font-medium text-slate-600 dark:text-navy-100">To:</span>
+    );
   };
 
   const usernamesToShow = inputValue
@@ -24,11 +26,11 @@ const UsernamesComboBox = ({ usernames, control, name, error }: IProps) => {
     : usernames;
 
   const dynamicClassName = error
-    ? "border-red-500 rounded-lg"
-    : "border-[#754eb477]";
+    ? "form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:z-10 hover:border-slate-400 focus:z-10 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+    : "form-input peer w-full rounded-lg border border-slate-300 bg-transparent px-3 py-2 pl-9 placeholder:text-slate-400/70 hover:z-10 hover:border-slate-400 focus:z-10 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent";
 
   return (
-    <div className="px-4 my-2 w-9/12">
+    <div className="px-4 my-2 w-full">
       {renderTopRow()}
       <Controller
         name={name}
@@ -54,12 +56,12 @@ const UsernamesComboBox = ({ usernames, control, name, error }: IProps) => {
               onFocus={() => setShowComboBox(true)}
             />
             {showComboBox && usernamesToShow.length > 0 ? (
-              <div className="relative">
-                <div className="absolute p-2 top-0 left-0 right-0 bg-gray-200">
+              <div className="relative z-50">
+                <div className="absolute p-1 top-0 left-0 right-0 bg-violet-100">
                   {usernamesToShow.map((item, index) => (
                     <div
                       key={index}
-                      className="p-1 m-2 bg-white rounded-lg  font-semibold cursor-pointer"
+                      className="p-2 m-1 bg-white rounded-md  font-semibold cursor-pointer"
                       onClick={() => {
                         setInputValue(item);
                         setShowComboBox(false);

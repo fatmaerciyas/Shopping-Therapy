@@ -42,7 +42,7 @@ const UpdateRolePage = () => {
       const err = error as { data: string; status: number };
       const { status } = err;
       if (status === 404) {
-        toast.error("UserName not Found!!!!!!!!!!!!!!!!!");
+        toast.error("UserName not Found!");
       } else {
         toast.error("An Error occured. Please contact admins");
       }

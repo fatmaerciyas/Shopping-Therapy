@@ -37,7 +37,7 @@ const MyLogsPage = () => {
   }
 
   return (
-    <div className="text-center w-full content-end justify-center m-12">
+    <div className="text-center container w-full content-end justify-center m-12">
       <h1 className="text-2xl font-bold">My Logs</h1>
       <div className="pageTemplate3 items-stretch">
         <div className="grid grid-cols-6 p-2 border-2 border-gray-200 rounded-lg">

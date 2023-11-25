@@ -1,6 +1,6 @@
 import axiosInstance from "../../api/axiosInstance";
 import { IMessageDto } from "../../models/Message";
-import { MY_INBOX_MESSAGE_URL } from "../../api/globalConfig";
+import { MY_SENDBOX_MESSAGE_URL } from "../../api/globalConfig";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import moment from "moment";
@@ -8,7 +8,7 @@ import Spinner from "../../layout/Spinner";
 import DashboardSidebar from "../../components/dashboard/sidebar/DashboardSidebar";
 import { NavLink } from "react-router-dom";
 
-const InboxPage = () => {
+const MySendboxPage = () => {
   const [messages, setMessages] = useState<IMessageDto[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -16,11 +16,10 @@ const InboxPage = () => {
     try {
       setLoading(true);
       const response = await axiosInstance.get<IMessageDto[]>(
-        MY_INBOX_MESSAGE_URL
+        MY_SENDBOX_MESSAGE_URL
       );
       const { data } = response;
       setMessages(data);
-      console.log(data);
       setLoading(false);
     } catch (error) {
       toast.error("An Error happened. Please Contact admins");
@@ -48,8 +47,12 @@ const InboxPage = () => {
       >
         <DashboardSidebar />
         <main className="main-content mail-app w-full px-[var(--margin-x)] pb-6">
-          <div className="flex">
-            <p className="ml-28 text-2xl my-4">Inbox</p>
+          <div className="flex flex-col-reverse py-5 sm:flex-row sm:justify-between">
+            <div className="mt-2 flex items-left justify-between space-x-1">
+              <div className="flex">
+                <p className="ml-28 text-2xl">Sendbox</p>
+              </div>
+            </div>
           </div>
           <div className="card ml-28">
             {/* IF NOT READ CSS IS */}
@@ -229,9 +232,9 @@ const InboxPage = () => {
                         </button>
                       </div>
                       <div className="flex items-left space-x-2">
-                        <div className="avatar h-6 w-6  text-indigo-700">
+                        <h3 className="line-clamp-1 text-indigo-700">
                           {item.sender}
-                        </div>
+                        </h3>
                       </div>
                     </div>
                     <div className="shrink-0 px-1 text-xs sm:hidden">
@@ -312,7 +315,7 @@ const InboxPage = () => {
     //       >
     //         <span>{moment(item.createdAt).fromNow()}</span>
     //         <span>
-    //           {item.sender === user?.userName ? (
+    //           {item.senderUserName === user?.userName ? (
     //             <MdOutput className="text-2xl text-purple-500" />
     //           ) : (
     //             <MdInput className="text-2xl text-green-500" />
@@ -320,7 +323,7 @@ const InboxPage = () => {
     //         </span>
     //         <div className=" col-span-2">{item.subject}</div>
     //         <div className="col-span-2">{item.details}</div>
-    //         <span>{item.sender}</span>
+    //         <span>{item.senderUserName}</span>
     //         <span>{item.receiverUserName}</span>
     //       </div>
     //     ))}
@@ -329,4 +332,4 @@ const InboxPage = () => {
   );
 };
 
-export default InboxPage;
+export default MySendboxPage;
