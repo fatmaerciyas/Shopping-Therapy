@@ -20,7 +20,6 @@ import UserPage from "../pages/dashboard/UserPage";
 import ManagerPage from "../pages/dashboard/ManagerPage";
 import UsersManagementPage from "../pages/dashboard/UserManagementPage";
 import UpdateRolePage from "../pages/dashboard/UpdateRolePage";
-import AllMessagesPage from "../pages/dashboard/AllMessages";
 import AdminPage from "../pages/dashboard/AdminPage";
 import SystemLogsPage from "../pages/dashboard/SystemLogsPage";
 import OwnerPage from "../pages/dashboard/OwnerPage";
@@ -35,6 +34,7 @@ import MySendboxPage from "../pages/dashboard/MySendboxPage";
 import MessageDetail from "../pages/dashboard/MessageDetail";
 import Order from "../pages/dashboard/Order";
 import OrderDetail from "../pages/dashboard/OrderDetail";
+import ThankYouPage from "../pages/public/ThankYouPage";
 
 const GlobalRouter = () => {
   return (
@@ -52,6 +52,7 @@ const GlobalRouter = () => {
         <Route path={PATH_PUBLIC.cart} element={<CartPage />} />
         <Route path={PATH_PUBLIC.checkout} element={<CheckoutPage />} />
         <Route path={PATH_PUBLIC.contact} element={<ContactPage />} />
+        <Route path={PATH_PUBLIC.thankyou} element={<ThankYouPage />} />
 
         {/* Protected routes -------------------------------------------------- */}
         <Route element={<AuthGuard roles={allAccessRoles} />}>

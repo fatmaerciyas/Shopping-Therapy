@@ -30,7 +30,7 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     async function fetchdata() {
-      const response = await axios.get<Cart[]>(baseUrl + "Cart");
+      const response = await axios.get<Cart[]>(baseUrl + "Cart/carts");
       setCart(response.data);
       setSubtotal(calculateTotalPrice());
 

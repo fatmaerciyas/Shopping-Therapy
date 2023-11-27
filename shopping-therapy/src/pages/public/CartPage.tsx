@@ -25,7 +25,7 @@ export default function CartPage() {
 
   useEffect(() => {
     async function fetchdata() {
-      const response = await axios.get<Cart[]>(baseUrl + "Cart");
+      const response = await axios.get<Cart[]>(baseUrl + "Cart/carts");
       setCart(response.data);
       setSubtotal(calculateTotalPrice());
 
@@ -60,6 +60,8 @@ export default function CartPage() {
   }, []);
 
   const increment = useCallback((cartItem: Cart) => {
+    console.log(cartItem.productId);
+    console.log(cartItem.quantity);
     addData(cartItem.productId, cartItem.quantity);
     setSubtotal(cartItem.product.price * cartItem.quantity);
   }, []);
@@ -71,7 +73,6 @@ export default function CartPage() {
     navigate(url);
   };
 
-  if (!isLoaded) return <Spinner />;
   return (
     <>
       <section className="relative table w-full py-8 lg:py-24 bg-gray-50 dark:bg-slate-800">

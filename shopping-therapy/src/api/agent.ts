@@ -63,7 +63,7 @@ const Category = {
 
 const Cart = {
   createCart: (productId: number, quantity = 1) =>
-    requests.post(`Cart?productId=${productId}&quantity=${quantity}`, {}),
+    requests.post(`Cart/carts?productId=${productId}&quantity=${quantity}`, {}),
   deleteCart: (productId: number, quantity = 1) =>
     requests.delete(`Cart?productId=${productId}&quantity=${quantity}`),
 };
