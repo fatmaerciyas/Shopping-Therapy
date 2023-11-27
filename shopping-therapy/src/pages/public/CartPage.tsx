@@ -53,7 +53,6 @@ export default function CartPage() {
   }
 
   const decrement = useCallback((cartItem: Cart) => {
-    console.log("azalt");
     if (cartItem.quantity > 0) {
       deleteData(cartItem.productId, cartItem.quantity);
       setSubtotal(cartItem.product.price * cartItem.quantity);
@@ -61,8 +60,6 @@ export default function CartPage() {
   }, []);
 
   const increment = useCallback((cartItem: Cart) => {
-    console.log("arttır");
-
     addData(cartItem.productId, cartItem.quantity);
     setSubtotal(cartItem.product.price * cartItem.quantity);
   }, []);

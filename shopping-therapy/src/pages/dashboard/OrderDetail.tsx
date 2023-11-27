@@ -108,7 +108,9 @@ export default function OrderDetail() {
                   </h5>
                   <h5 className="text-lg font-semibold">
                     Quantity:
-                    <span className="text-slate-400 mt-2">{product.stock}</span>
+                    <span className="text-slate-400 mt-2">
+                      {product.quantity}
+                    </span>
                   </h5>
                   <p className=" text-slate-400 mt-4">{product.description}</p>
                 </div>

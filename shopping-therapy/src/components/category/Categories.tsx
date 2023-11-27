@@ -17,13 +17,10 @@ export default function Categories({
   isLoaded,
 }: CategoriesItems) {
   function handleGetFiterByCategory(categoryId: string) {
-    console.log(`category Id is : ${categoryId}`);
-
     axios
       .get<Product[]>(baseUrl + `Product?categoryId=${categoryId}`)
       .then((response) => {
         setProducts(response.data);
-        console.log(response.data);
       });
   }
 
@@ -32,7 +29,6 @@ export default function Categories({
       .get<Product[]>(baseUrl + `Product?categoryId=${1}`)
       .then((response) => {
         setProducts(response.data);
-        console.log(response.data);
       });
     count = false;
   }

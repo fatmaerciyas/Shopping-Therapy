@@ -56,7 +56,6 @@ const GlobalRouter = () => {
         {/* Protected routes -------------------------------------------------- */}
         <Route element={<AuthGuard roles={allAccessRoles} />}>
           <Route path={PATH_DASHBOARD.dashboard} element={<DashboardPage />} />
-
           <Route
             path={PATH_DASHBOARD.sendMessage}
             element={<MySendboxPage />}

@@ -23,7 +23,7 @@ export default function Order() {
       .then((response) => setBasket(response.data));
 
     axios
-      .get(`${baseUrl}Cart/carts`)
+      .get(`${baseUrl}Cart/orders?username=${user?.userName}`)
       .then((response) => setCart(response.data));
 
     basket.forEach((basketItem) => {
@@ -173,7 +173,10 @@ export default function Order() {
                       </button>
                     </div>
                   </div>
-                  <div className="hidden px-2 text-xs+ mr-20 sm:flex">
+                  <div className="shrink-0 px-1 mr-8 text-xs ">
+                    {item.product.quantity}
+                  </div>
+                  <div className="hidden px-2 text-xs+ mx-20 sm:flex">
                     {item.product.price}
                   </div>
                 </div>

@@ -16,27 +16,6 @@ export default function Catalog() {
 
   const [query, setQuery] = useState("Electronics");
 
-  // useEffect(() => {
-  //   async function fetchdata() {
-  //     try {
-  //       if (category_id) {
-  //         const responseProduct = await axios.get<Product[]>(
-  //           baseUrl + `Product?categoryId=${category_id}`
-  //         );
-  //         setProducts(responseProduct.data);
-  //         setIsLoaded(true);
-  //       }
-  //       const responseProduct = await axios.get<Product[]>(baseUrl + "Product");
-  //       setProducts(responseProduct.data);
-
-  //       setIsLoaded(true);
-  //     } catch (error) {
-  //       console.error("Error fetching data: ", error);
-  //     }
-  //   }
-  //   fetchdata();
-  // }, [category_id]);
-
   useEffect(() => {
     async function fetchdata() {
       const response = await axios.get<Category[]>(baseUrl + "Category");
@@ -51,6 +30,7 @@ export default function Catalog() {
       product.name.toLowerCase().includes(query.toLowerCase())
     );
     setProducts(filteredProducts);
+    console.log(filteredProducts);
   }
 
   if (!isLoaded) return <Spinner />;
@@ -158,3 +138,24 @@ export default function Catalog() {
     </>
   );
 }
+
+// useEffect(() => {
+//   async function fetchdata() {
+//     try {
+//       if (category_id) {
+//         const responseProduct = await axios.get<Product[]>(
+//           baseUrl + `Product?categoryId=${category_id}`
+//         );
+//         setProducts(responseProduct.data);
+//         setIsLoaded(true);
+//       }
+//       const responseProduct = await axios.get<Product[]>(baseUrl + "Product");
+//       setProducts(responseProduct.data);
+
+//       setIsLoaded(true);
+//     } catch (error) {
+//       console.error("Error fetching data: ", error);
+//     }
+//   }
+//   fetchdata();
+// }, [category_id]);

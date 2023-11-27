@@ -67,12 +67,12 @@ export default function Header() {
                   About
                 </Link>
               </li>
-
+              {/* 
               <li>
                 <Link to="/contact" className="sub-menu-item">
                   Contact
                 </Link>
-              </li>
+              </li> */}
               {isAuthenticated ? (
                 <div className="flex items-center gap-2">
                   <Button

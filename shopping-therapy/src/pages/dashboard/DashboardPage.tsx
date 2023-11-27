@@ -6,11 +6,7 @@ const DashboardPage = () => {
     <div className="text-center w-full content-end justify-center mt-20">
       <PageAccessTemplate color="#000" icon={BsGlobeAmericas} role="Dashboard">
         <div className="text-3xl text-zinc-950 space-y-2">
-          <h1>Dashboard Access:</h1>
-          <h1>Owner</h1>
-          <h1>Admin</h1>
-          <h1>Manager</h1>
-          <h1>User</h1>
+          <h1 className=" text-purple-800">Welcome the OneStopShop </h1>
         </div>
       </PageAccessTemplate>
     </div>

@@ -78,14 +78,12 @@ export default function ProductListing({
               return null;
             }
 
-            const { productId } = product;
+            // const { productId } = product;
 
             return (
               <>
                 {products &&
-                  products.map((product) => (
-                    <ProductItem product={product} key={productId} />
-                  ))}
+                  products.map((product) => <ProductItem product={product} />)}
               </>
             );
           })}

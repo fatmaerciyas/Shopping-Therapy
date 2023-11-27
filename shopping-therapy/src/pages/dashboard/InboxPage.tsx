@@ -21,10 +21,10 @@ const InboxPage = () => {
       const { data } = response;
       setMessages(data);
       console.log(data);
-      setLoading(false);
+      setLoading(true);
     } catch (error) {
       toast.error("An Error happened. Please Contact admins");
-      setLoading(false);
+      setLoading(true);
     }
   };
 
@@ -32,7 +32,7 @@ const InboxPage = () => {
     getMyMessages();
   }, []);
 
-  if (loading) {
+  if (!loading) {
     return (
       <div className="w-full">
         <Spinner />
