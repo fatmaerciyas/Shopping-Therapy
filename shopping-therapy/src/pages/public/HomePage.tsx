@@ -30,36 +30,48 @@ export default function HomePage() {
   if (!isLoaded) return <Spinner />;
   return (
     <>
-      <section className="relative mt-20">
+      <section className="relative  ">
         <div className="container-fluid relative">
-          <div className="relative py-48 table w-full shadow-md overflow-hidden">
-            <div className="absolute inset-0 bg-[url('../../assets/images/shop/backgrounds/home2.jpg')] bg-no-repeat md:bg-left bg-center bg-cover"></div>
-            <div className="absolute inset-0 bg-slate-950/30"></div>
-            <div className="container relative">
-              <div className="grid grid-cols-1">
-                <div className="md:text-start text-center">
-                  <h1 className="font-bold text-white lg:leading-normal leading-normal text-4xl lg:text-5xl">
-                    OneStopShop
-                  </h1>
-                  <br />
+          <div
+            className="relative pb-48  justify-center text-center flex items-center  
+            h-screen 
+            w-full shadow-md overflow-hidden
+             "
+          >
+            <div className=" text-center z-50 relative w-2/4 mt-48 ">
+              <h1 className="font-bold text-slate-200 text-4xl lg:text-5xl">
+                OneStopShop
+              </h1>
+              <br />
 
-                  <p className="text-white/70 text-xl max-w-xl">
-                    Necmettin Erbakan University <br />
-                    2023-2024 Academic Year Graduation Project
-                  </p>
-                  <div className="mt-6">
-                    <a
-                      href="#"
-                      className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md me-2 mt-2"
-                    >
-                      <Link to="/catalog" className="mdi mdi-cart-outline">
-                        Shop Now
-                      </Link>
-                    </a>
-                  </div>
-                </div>
+              <p className="text-white/70 text-xl ">
+                Necmettin Erbakan University <br />
+                2023-2024 Academic Year Graduation Project
+              </p>
+              <div className="mt-6">
+                <a
+                  href="#"
+                  className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-slate-200 rounded-md me-2 mt-2"
+                >
+                  <Link to="/catalog" className=" mdi mdi-cart-outline">
+                    Shop Now
+                  </Link>
+                </a>
               </div>
             </div>
+
+            <video
+              src="../../assets/images/shop/backgrounds/video2.mp4"
+              autoplay="{true}"
+              loop
+              muted
+              className=" absolute w-full opacity-40 mt-32
+            min-w-full min-h-full"
+            >
+              aaa
+            </video>
+
+            {/* //bg-[url('../../assets/images/shop/backgrounds/home2.jpg')] */}
           </div>
         </div>
       </section>
@@ -143,7 +155,12 @@ export default function HomePage() {
           </div>
 
           <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
-            <ProductListing products={products} setSort={setSort} sort={sort} />{" "}
+            <ProductListing
+              products={products}
+              setSort={setSort}
+              sort={sort}
+              gridState="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-8 gap-12"
+            />{" "}
           </div>
         </div>
 
@@ -157,7 +174,7 @@ export default function HomePage() {
           <PopularCategories />
         </div>
 
-        <div className="container relative mt-16">
+        {/* <div className="container relative mt-16">
           <div className="grid grid-cols-1 items-center">
             <h3 className="text-2xl leading-normal font-semibold">
               Popular Products
@@ -501,7 +518,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
 
       <section
@@ -533,7 +550,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative py-16">
+      {/* <section className="relative py-16">
         <div className="container relative">
           <div className="grid grid-cols-1 items-center">
             <h3 className="text-2xl leading-normal font-semibold">
@@ -763,8 +780,6 @@ export default function HomePage() {
 
             <div className="group">
               <div className="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
-                <img src="assets/images/shop/items/s16.jpg" alt="" />
-
                 <div className="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
                   <a
                     href="shop-cart.html"
@@ -835,7 +850,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

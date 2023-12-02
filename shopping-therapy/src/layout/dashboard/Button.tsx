@@ -1,5 +1,5 @@
 interface IProps {
-  variant: "primary" | "secondary" | "danger" | "light";
+  variant: "primary" | "secondary" | "danger" | "light" | "header";
   type: "submit" | "button";
   label: string;
   onClick: () => void;
@@ -24,7 +24,10 @@ export default function Button({
     "bg-warning/10 text-warningborder-[#AE899A] hover:shadow-[0_0_5px_5px_#ae899a70]";
 
   const lightClasses =
-    "bg-success/10 text-success hover:shadow-[0_0_5px_5px_#754eb44c]";
+    "bg-success/10 text-slate-300 hover:shadow-[0_0_5px_5px_#754eb44c]";
+
+  const headerClasses =
+    "text-white hover:shadow-[0_0_5px_5px_#ae899a70] text-3xl";
 
   const classNameCreator = (): string => {
     let finalClassName =
@@ -37,6 +40,8 @@ export default function Button({
       finalClassName += dangerClasses;
     } else if (variant === "light") {
       finalClassName += lightClasses;
+    } else if (variant === "header") {
+      finalClassName += headerClasses;
     }
     finalClassName +=
       " disabled:shadow-none disabled:bg-gray-300 disabled:border-gray-300";

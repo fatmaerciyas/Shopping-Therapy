@@ -1,6 +1,6 @@
 export default function AboutPage() {
   return (
-    <section className="relative table w-full  lg:py-8 bg-gray-100 dark:bg-slate-800">
+    <section className="relative table w-full  lg:py-8 bg-slate-700 dark:bg-slate-800">
       <img
         src="../../assets/images/bg_about.jpg"
         className="w-full object-cover max-h-96 object-left "

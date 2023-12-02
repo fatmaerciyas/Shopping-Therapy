@@ -1,6 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { Product } from "../../models/Product";
 import agent from "../../api/agent";
+import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 interface ProductItemProps {
   product: Product;
@@ -22,7 +25,7 @@ export default function ProductItem({ product }: ProductItemProps) {
       onClick={() => navigate(`/catalog/${product.productId}`)}
       className="group "
     >
-      <div className="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
+      <div className="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-xl group-hover:scale-110 duration-500 group-hover:dark:shadow-gray-800 rounded-md ">
         <img src={product.image} alt="" />
 
         <div className="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
@@ -41,7 +44,7 @@ export default function ProductItem({ product }: ProductItemProps) {
               href="javascript:void(0)"
               className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
             >
-              <i className="mdi mdi-heart"></i>
+              <AiOutlineHeart />
             </a>
           </li>
           <li className="mt-1">
@@ -49,7 +52,7 @@ export default function ProductItem({ product }: ProductItemProps) {
               href="shop-item-detail.html"
               className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
             >
-              <i className="mdi mdi-eye-outline"></i>
+              <AiOutlineEye />
             </a>
           </li>
           <li className="mt-1">
@@ -57,7 +60,7 @@ export default function ProductItem({ product }: ProductItemProps) {
               href="javascript:void(0)"
               className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
             >
-              <i className="mdi mdi-bookmark-outline"></i>
+              <AiOutlineShoppingCart />
             </a>
           </li>
         </ul>
@@ -75,34 +78,12 @@ export default function ProductItem({ product }: ProductItemProps) {
       </div>
 
       <div className="mt-4">
-        <a
-          href="shop-item-detail.html"
-          className="hover:text-indigo-600 text-lg font-semibold"
-        >
+        <a className="hover:text-purple-300 duration-500 text-xl text-center font-semibold">
           {product.name}
         </a>
         <div className="flex justify-between items-center mt-1">
-          <p className="text-green-600">
-            ${product.price}
-            <del className="text-red-600">${product.price + 12}</del>
-          </p>
-          <ul className="font-medium text-amber-400 list-none">
-            <li className="inline">
-              <i className="mdi mdi-star"></i>
-            </li>
-            <li className="inline">
-              <i className="mdi mdi-star"></i>
-            </li>
-            <li className="inline">
-              <i className="mdi mdi-star"></i>
-            </li>
-            <li className="inline">
-              <i className="mdi mdi-star"></i>
-            </li>
-            <li className="inline">
-              <i className="mdi mdi-star"></i>
-            </li>
-          </ul>
+          <p className="text-green-600 text-xl">${product.price}</p>
+          <del className="text-red-600 ml-4"> ${product.price + 12}</del>
         </div>
       </div>
     </div>

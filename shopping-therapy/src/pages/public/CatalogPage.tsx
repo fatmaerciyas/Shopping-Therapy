@@ -26,18 +26,19 @@ export default function Catalog() {
   }, [categories]);
 
   function handleSearch() {
+    setIsLoaded(false);
     const filteredProducts = products.filter((product) =>
       product.name.toLowerCase().includes(query.toLowerCase())
     );
     setProducts(filteredProducts);
-    console.log(filteredProducts);
+    setIsLoaded(true);
   }
 
   if (!isLoaded) return <Spinner />;
 
   return (
     <>
-      <section className="relative table w-full  lg:py-8 bg-gray-50 dark:bg-slate-800">
+      <section className="relative w-full bg-gray-50 dark:bg-slate-800">
         <img
           src="../../assets/images/shop/backgrounds/home-bg.jpg"
           className="w-full object-cover max-h-96 object-left-top "
@@ -62,8 +63,8 @@ export default function Catalog() {
 
       <section className="relative md:py-24 py-16">
         <div className="container">
-          <div className="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
-            <div className="lg:col-span-4 md:col-span-6">
+          <div className="grid md:grid-cols-12  gap-[80px]">
+            <div className="lg:col-span-4 mt-[72px]  md:col-span-6">
               <div className="shadow dark:shadow-gray-800 p-6 rounded-md bg-white dark:bg-slate-900 sticky top-20">
                 <form>
                   <div className="grid grid-cols-1 gap-3">
@@ -108,30 +109,12 @@ export default function Catalog() {
               </div>
             </div>
 
-            <ProductListing products={products} setSort={setSort} sort={sort} />
-          </div>
-        </div>
-
-        <div className="container relative md:mt-24 mt-16">
-          <div className="grid md:grid-cols-12 grid-cols-1 items-center">
-            <div className="lg:col-span-5 md:col-span-6">
-              <img
-                src="assets/images/illustrator/envelope.svg"
-                className="mx-auto d-block"
-                alt=""
-              />
-            </div>
-
-            <div className="lg:col-span-7 md:col-span-6">
-              <div className="inline-block">
-                <div className="pt-4 flex items-center border-t border-gray-100 dark:border-gray-700">
-                  <i
-                    data-feather="smartphone"
-                    className="me-2 text-indigo-600 h-10 w-10"
-                  ></i>
-                </div>
-              </div>
-            </div>
+            <ProductListing
+              products={products}
+              setSort={setSort}
+              sort={sort}
+              gridState="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8 gap-12"
+            />
           </div>
         </div>
       </section>

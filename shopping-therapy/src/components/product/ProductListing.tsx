@@ -9,9 +9,11 @@ interface ProductItems {
   products: Product[];
   setSort: React.Dispatch<React.SetStateAction<string>>;
   sort: string;
+  gridState: string;
 }
 
 export default function ProductListing({
+  gridState,
   products,
   setSort,
   sort,
@@ -63,7 +65,7 @@ export default function ProductListing({
         <Sorting setSort={setSort} />
       </div>
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-8 gap-12">
+      <div className={`${gridState}`}>
         {currentItems
           .sort((a, b) =>
             sort == "inc"
