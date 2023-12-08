@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth.hook";
-import Sidebar from "./SidebarDashboard";
+import Sidebar from "./NavbarDashboard";
 import Header from "../Header";
 import Footer from "../Footer";
 
@@ -74,10 +74,10 @@ const Layout = () => {
           document.documentElement.classList.add("dark");
         </script>
       </head>
-      <body className="font-nunito text-base   bg-slate-800	 text-white ">
+      <body className="font-nunito text-base bg-slate-800 text-white ">
         {isAuthenticated ? (
           <>
-            <div className="flex flex-col  ">
+            <div className="flex flex-col ">
               {sideBarRenderer()}
               <Outlet />
             </div>

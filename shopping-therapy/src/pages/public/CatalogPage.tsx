@@ -20,10 +20,14 @@ export default function Catalog() {
     async function fetchdata() {
       const response = await axios.get<Category[]>(baseUrl + "Category");
       setCategories(response.data);
+
+      const productsResponse = await axios.get<Product[]>(baseUrl + "Product");
+      setProducts(productsResponse.data);
+
       setIsLoaded(true);
     }
     fetchdata();
-  }, [categories]);
+  }, []);
 
   function handleSearch() {
     setIsLoaded(false);
@@ -108,7 +112,6 @@ export default function Catalog() {
                 </form>
               </div>
             </div>
-
             <ProductListing
               products={products}
               setSort={setSort}

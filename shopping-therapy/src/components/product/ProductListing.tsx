@@ -24,9 +24,6 @@ export default function ProductListing({
 
   const ItemsPerPage = 9;
 
-  // Simulate fetching items from another resources.
-  // (This could be items from props; or items loaded in a local state
-  // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + ItemsPerPage;
 
   const currentItems = filteredProducts.slice(itemOffset, endOffset);
@@ -43,10 +40,9 @@ export default function ProductListing({
   // const redirect = useNavigate();
 
   useEffect(() => {
-    if (products) {
-      setFilteredProducts(products);
-    }
-  }, [products, filteredProducts]);
+    setFilteredProducts(products);
+    console.log(products);
+  }, [products]);
 
   // const redirectToEditPage = (id: string) => {
   //   redirect(`/edit/${id}`);
@@ -65,46 +61,53 @@ export default function ProductListing({
         <Sorting setSort={setSort} />
       </div>
 
-      <div className={`${gridState}`}>
-        {currentItems
-          .sort((a, b) =>
-            sort == "inc"
-              ? a.price - b.price
-              : sort == "dec"
-              ? b.price - a.price
-              : 0
-          )
-          .map((product) => {
-            if (!product) {
-              console.log(`product is: :${product}`);
-              return null;
-            }
+      {products.length != 0 ? (
+        <>
+          <div className={`${gridState}`}>
+            {currentItems
+              .sort((a, b) =>
+                sort == "inc"
+                  ? a.price - b.price
+                  : sort == "dec"
+                  ? b.price - a.price
+                  : 0
+              )
+              .map((product) => {
+                if (!product) {
+                  console.log(`product is: :${product}`);
+                  return null;
+                }
 
-            // const { productId } = product;
+                // const { productId } = product;
 
-            return (
-              <>
-                {products &&
-                  products.map((product) => <ProductItem product={product} />)}
-              </>
-            );
-          })}
-      </div>
+                return (
+                  <>
+                    <ProductItem key={product.productId} product={product} />
+                  </>
+                );
+              })}
+          </div>
 
-      <div className="grid md:grid-cols-12 grid-cols-1 mt-8">
-        <div className="md:col-span-12 text-center justify-center">
-          <ReactPaginate
-            className="paginate"
-            breakLabel="..."
-            nextLabel=">"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            pageCount={pageCount}
-            previousLabel="<"
-            renderOnZeroPageCount={null}
-          />
-        </div>
-      </div>
+          <div className="grid md:grid-cols-12 grid-cols-1 mt-8">
+            <div className="md:col-span-12 text-center justify-center">
+              <ReactPaginate
+                className="paginate"
+                breakLabel="..."
+                nextLabel=">"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={5}
+                pageCount={pageCount}
+                previousLabel="<"
+                renderOnZeroPageCount={null}
+              />
+            </div>
+          </div>
+        </>
+      ) : (
+        <p className="text-white m-auto text-lg mt-20 ">
+          There are no products in this category yet 👉👈😅
+        </p>
+      )}
     </div>
   );
 }

@@ -15,25 +15,10 @@ export default function Sidebar() {
 
   return (
     <>
-      <div className="self-center flex flex-col items-center">
-        <BiUser className="w-10 h-10 text-white" />
-        <h4 className="text-white">
-          {user?.firstName} {user?.lastName}
-        </h4>
-      </div>
-      <div className="sidebar print:hidden">
-        <div className="main-sidebar ">
-          <div className="flex h-full w-full flex-col items-center border-r  border-gray-200 bg-white dark:border-navy-700 dark:bg-navy-800">
-            <div className="flex pt-4">
-              <a href="index.html">
-                <img
-                  className="h-11 w-11 transition-transform duration-500 ease-in-out hover:rotate-[360deg]"
-                  src="images/app-logo.svg"
-                  alt="logo"
-                />
-              </a>
-            </div>
-
+      <div className="self-center mt-20 flex flex-col items-center"></div>
+      <div className="sidebar  rounded-xl print:hidden">
+        <div className="main-sidebar rounded-xl mt-24 ">
+          <div className="flex h-full rounded-xl w-full flex-col items-center border-r  border-gray-200 bg-white dark:border-navy-700 dark:bg-navy-800">
             <div className=" flex  items-center flex-col space-y-4 pt-6  ">
               <a
                 onClick={() => handleClick(PATH_DASHBOARD.usersManagement)}
@@ -239,15 +224,15 @@ export default function Sidebar() {
                 </svg>
               </a>
 
-              <div className="flex">
-                <button x-ref="popperRef" className="avatar h-12 w-12">
-                  <img
-                    className="rounded-full"
-                    src="images/avatar/avatar-12.jpg"
-                    alt="avatar"
-                  />
-                  <span className="absolute right-0 h-3.5 w-3.5 rounded-full border-2 border-white bg-success dark:border-navy-700"></span>
-                </button>
+              <div className="flex align-bottom">
+                <div className="flex pt-4 flex-col text-center items-center">
+                  <button x-ref="popperRef" className="avatar h-12 w-12">
+                    <img className="rounded-full" src={user?.image} />
+                  </button>
+                  <h4 className="text-slate-700">
+                    {user?.firstName} {user?.lastName}
+                  </h4>
+                </div>
 
                 <div
                   className=" popper-root fixedisShowPopper && 'show'"

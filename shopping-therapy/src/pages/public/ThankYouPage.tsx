@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 export default function ThankYouPage() {
   return (
     <>
-      <section className="relative h-screen flex items-center justify-center text-center bg-gray-50 dark:bg-slate-800">
+      <section className="relative h-screen flex items-center justify-center text-center bg-slate-800 dark:bg-slate-800">
         <div className="container relative">
           <div className="grid grid-cols-1">
             <div className="title-heading text-center my-auto">

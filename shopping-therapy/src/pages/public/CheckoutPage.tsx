@@ -46,19 +46,20 @@ export default function CheckoutPage() {
   }
 
   if (!isLoaded) return <Spinner />;
+
   if (isAuthenticated) {
     return (
       <>
-        <section className="relative table w-full py-20 lg:py-8 bg-gray-50 dark:bg-slate-800">
+        <section className="relative table w-full  bg-slate-700  m-20 dark:bg-slate-800">
           <div className="container relative">
             <div className="grid grid-cols-1 mt-14">
-              <h3 className="text-3xl leading-normal font-semibold">
+              <h3 className="text-3xl leading-normal mt-8 font-semibold">
                 Checkout
               </h3>
             </div>
           </div>
         </section>
-
+        <hr className="text-slate-600 bg-slate-600 w-11/12 m-auto" />
         <section className="relative md:py-4 mb-24  pb-20">
           <div className="container">
             <div className="grid lg:grid-cols-12 md:grid-cols-2 grid-cols-1 gap-[30px]">
@@ -162,7 +163,7 @@ export default function CheckoutPage() {
                       </div>
                     ))}
                     {/* map */}
-                    <div className="p-3 flex justify-between items-center border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-slate-800 text-green-600">
+                    <div className="p-3 flex justify-between items-center border border-gray-100 dark:border-gray-800 bg-slate-600 dark:bg-slate-800 text-green-600">
                       <div>
                         <h5 className="font-semibold">Free Cargo</h5>
                         <p className="text-sm text-green-600">discount</p>

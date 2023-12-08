@@ -73,9 +73,11 @@ export default function CartPage() {
     navigate(url);
   };
 
+  if (!isLoaded) return <Spinner />;
+
   return (
     <>
-      <section className="relative table w-full py-8 lg:py-24 bg-gray-50 dark:bg-slate-800">
+      <section className="relative table w-full lg:pt-16 bg-gray-50 dark:bg-slate-800">
         <img
           src="../../assets/images/glasses.jpg"
           className="w-full object-cover max-h-96 object-top-bottom "
@@ -99,84 +101,90 @@ export default function CartPage() {
         <div className="container">
           <div className="grid lg:grid-cols-1">
             <div className="relative overflow-x-auto shadow dark:shadow-gray-800 rounded-md">
-              <table className="w-full text-start">
-                <thead className="text-sm uppercase bg-slate-50 dark:bg-slate-800">
-                  <tr>
-                    <th scope="col" className="p-4 w-4"></th>
-                    <th scope="col" className="text-start p-4 min-w-[50px]">
-                      Product
-                    </th>
-                    <th scope="col" className="text-start p-4 min-w-[120px]">
-                      Brand
-                    </th>
-                    <th scope="col" className="p-4 w-24 min-w-[180px]">
-                      Price
-                    </th>
-                    <th scope="col" className="p-4 w-56 min-w-[220px]">
-                      Quantity
-                    </th>
-                    <th scope="col" className="p-4 w-24 min-w-[100px]">
-                      Total($)
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cart.map((cartItem) => (
-                    <tr className="bg-white dark:bg-slate-900 border-t border-gray-100 dark:border-gray-800">
-                      <td className="p-4">
-                        <a href="#">
-                          <i className="mdi mdi-window-close text-red-600"></i>
-                        </a>
-                      </td>
-                      <td className="p-4">
-                        <span className="flex items-center">
-                          <img
-                            src={cartItem.product.image}
-                            className="rounded shadow dark:shadow-gray-800 w-12"
-                            alt=""
-                          />
-                          <span className="ms-3">
-                            <span className="block font-semibold">
-                              {cartItem.product.name}
+              {cart.length ? (
+                <table className="w-full text-center my-12">
+                  <thead className="text-sm text-slate-200 border border-slate-600 rounded-2xl uppercase bg-slate-700 dark:bg-slate-800">
+                    <tr>
+                      <th scope="col" className="p-4 w-4"></th>
+                      <th scope="col" className="text-start p-4 min-w-[50px]">
+                        Product
+                      </th>
+                      <th scope="col" className="text-start p-4 min-w-[120px]">
+                        Brand
+                      </th>
+                      <th scope="col" className="p-4 w-24 min-w-[180px]">
+                        Price
+                      </th>
+                      <th scope="col" className="p-4 w-56 min-w-[220px]">
+                        Quantity
+                      </th>
+                      <th scope="col" className="p-4 w-24 min-w-[100px]">
+                        Total($)
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cart.map((cartItem) => (
+                      <tr className="bg-slate-800 border border-slate-500">
+                        <td className="p-4">
+                          <a href="#">
+                            <i className="mdi mdi-window-close text-red-600"></i>
+                          </a>
+                        </td>
+                        <td className="p-4">
+                          <span className="flex items-center">
+                            <img
+                              src={cartItem.product.image}
+                              className="rounded shadow dark:shadow-gray-800 w-12"
+                              alt=""
+                            />
+                            <span className="ms-3">
+                              <span className="block font-semibold">
+                                {cartItem.product.name}
+                              </span>
                             </span>
                           </span>
-                        </span>
-                      </td>
-                      <td className="p-4 "> {cartItem.product.brand}</td>
-                      <td className="p-4 text-center">
-                        $ {cartItem.product.price}
-                      </td>
-                      <td className="p-4 text-center">
-                        <div className="grid  gap-[30px] mt-4">
-                          <div className="justify-between">
-                            <button
-                              onClick={() => decrement(cartItem)}
-                              className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white minus"
-                            >
-                              -
-                            </button>
-                            <input
-                              type="text"
-                              value={cartItem.quantity}
-                              className="h-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white pointer-events-none w-16 ps-4 quantity"
-                            />
+                        </td>
+                        <td className="p-4 "> {cartItem.product.brand}</td>
+                        <td className="p-4 text-center">
+                          $ {cartItem.product.price}
+                        </td>
+                        <td className="p-4 text-center">
+                          <div className="grid  gap-[30px] mt-4">
+                            <div className="justify-between">
+                              <button
+                                onClick={() => decrement(cartItem)}
+                                className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white minus"
+                              >
+                                -
+                              </button>
+                              <input
+                                type="text"
+                                value={cartItem.quantity}
+                                className="h-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white pointer-events-none w-16 ps-4 quantity"
+                              />
 
-                            <button
-                              onClick={() => increment(cartItem)}
-                              className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white plus"
-                            >
-                              +
-                            </button>
+                              <button
+                                onClick={() => increment(cartItem)}
+                                className="h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-md bg-indigo-600/5 hover:bg-indigo-600 border border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white plus"
+                              >
+                                +
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      </td>
-                      <td className="p-4 text-end">
-                        $ {cartItem.quantity * cartItem.product.price}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                        </td>
+                        <td className="p-4 text-end">
+                          $ {cartItem.quantity * cartItem.product.price}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p className="text-slate-50 text-center text-2xl my-20  ">
+                  Your basket is empty
+                </p>
+              )}
             </div>
 
             <div className="grid lg:grid-cols-12 md:grid-cols-2 grid-cols-1 mt-6 gap-6">

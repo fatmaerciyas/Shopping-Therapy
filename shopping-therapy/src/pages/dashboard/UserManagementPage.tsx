@@ -40,14 +40,16 @@ const UsersManagementPage = () => {
   }
 
   return (
-    <div className="text-center w-full content-end container justify-center mt-16">
-      <h1 className="text-2xl mb-4 font-bold">Users Management</h1>
-      <UserCountSection usersList={users} />
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-4">
-        <UserChartSection usersList={users} />
-        <LatestUsersSection usersList={users} />
+    <div className="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900">
+      <div className="text-center w-full  bg-slate-50 container justify-center pt-16">
+        <h1 className="text-2xl mb-4 font-bold">Users Management</h1>
+        <UserCountSection usersList={users} />
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-4">
+          <UserChartSection usersList={users} />
+          <LatestUsersSection usersList={users} />
+        </div>
+        <UsersTableSection usersList={users} />
       </div>
-      <UsersTableSection usersList={users} />
     </div>
   );
 };

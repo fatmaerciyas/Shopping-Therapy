@@ -5,6 +5,7 @@ import { Product } from "../../models/Product";
 import { baseUrl } from "../../api/url.contants";
 import Spinner from "../../layout/Spinner";
 import agent from "../../api/agent";
+import { toast } from "react-hot-toast";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -24,15 +25,30 @@ export default function ProductDetail() {
 
   const addCartItemAsync = ({ productId, quantity = 1 }) => {
     try {
+      toast.success("The product has been added to your cart");
       return agent.Cart.createCart(productId, quantity);
     } catch (err) {
       console.log(err);
     }
   };
 
+  // try {
+  //   setLoading(true);
+  //   await login(data.userName, data.password);
+  //   setLoading(false);
+  // } catch (error) {
+  //   setLoading(false);
+  //   const err = error as { data: string; status: number };
+  //   const { status } = err;
+  //   if (status === 401) {
+  //     toast.error("Invalid Username or Password");
+  //   } else {
+  //     toast.error("An Error occurred. Please contact admins");
+  //   }
+  // }
   return (
     <>
-      <section className="relative table w-full py-8 lg:py-8 bg-gray-50 dark:bg-slate-800">
+      <section className="relative w-full  bg-gray-50 dark:bg-slate-800 ">
         <img
           src="../../assets/images/productdetail.jpg"
           className="w-full object-cover max-h-96 object-left-bottom "
@@ -57,7 +73,7 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      <section className="relative md:py-8 py-16">
+      <section className="relative pt-16 pb-24">
         <div className="container">
           <div className="grid md:grid-cols-12 grid-cols-1 gap-[30px] items-center">
             <div className="lg:col-span-5 md:col-span-6">
@@ -178,10 +194,10 @@ export default function ProductDetail() {
             <div className="lg:col-span-3 md:col-span-5">
               <p
                 role="presentation"
-                className="flex-column p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-md"
+                className="flex-column p-6  bg-slate-800 text-slate-100  dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-md"
               >
                 <button
-                  className="px-4 py-2 text-start text-base font-semibold rounded-md w-full hover:text-indigo-600 duration-500"
+                  className="px-4 py-2 text-start  text-xl font-semibold rounded-md w-full duration-500"
                   id="description-tab"
                   data-tabs-target="#description"
                   type="button"
@@ -189,7 +205,7 @@ export default function ProductDetail() {
                   aria-controls="description"
                   aria-selected="true"
                 >
-                  Description
+                  Description:
                 </button>
               </p>
             </div>
@@ -197,7 +213,7 @@ export default function ProductDetail() {
             <div className="lg:col-span-9 md:col-span-7">
               <div
                 id="myTabContent"
-                className="p-6 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-md"
+                className="p-6 bg-slate-800 text-slate-50 dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-md"
               >
                 <div
                   className=""
@@ -549,308 +565,6 @@ export default function ProductDetail() {
                       </button>
                     </form>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="container relative mt-16">
-          <div className="grid grid-cols-1 items-center">
-            <h3 className="text-2xl leading-normal font-semibold">
-              Recent Products
-            </h3>
-          </div>
-
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
-            <div className="group">
-              <div className="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
-                <img src="assets/images/shop/items/s13.jpg" alt="" />
-
-                <div className="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
-                  <a
-                    href="shop-cart.html"
-                    className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-slate-900 border-slate-900 text-white w-full rounded-md"
-                  >
-                    Add to Cart
-                  </a>
-                </div>
-
-                <ul className="list-none absolute top-[10px] end-4 opacity-0 group-hover:opacity-100 duration-500">
-                  <li>
-                    <a
-                      href="javascript:void(0)"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-heart"></i>
-                    </a>
-                  </li>
-                  <li className="mt-1">
-                    <a
-                      href="shop-item-detail.html"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-eye-outline"></i>
-                    </a>
-                  </li>
-                  <li className="mt-1">
-                    <a
-                      href="javascript:void(0)"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-bookmark-outline"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mt-4">
-                <a
-                  href="shop-item-detail.html"
-                  className="hover:text-indigo-600 text-lg font-semibold"
-                >
-                  Wooden Chair
-                </a>
-                <div className="flex justify-between items-center mt-1">
-                  <p className="text-green-600">
-                    $16.00 <del className="text-red-600">$21.00</del>
-                  </p>
-                  <ul className="font-medium text-amber-400 list-none">
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="group">
-              <div className="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
-                <img src="assets/images/shop/items/s14.jpg" alt="" />
-
-                <div className="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
-                  <a
-                    href="shop-cart.html"
-                    className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-slate-900 border-slate-900 text-white w-full rounded-md"
-                  >
-                    Add to Cart
-                  </a>
-                </div>
-
-                <ul className="list-none absolute top-[10px] end-4 opacity-0 group-hover:opacity-100 duration-500">
-                  <li>
-                    <a
-                      href="javascript:void(0)"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-heart"></i>
-                    </a>
-                  </li>
-                  <li className="mt-1">
-                    <a
-                      href="shop-item-detail.html"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-eye-outline"></i>
-                    </a>
-                  </li>
-                  <li className="mt-1">
-                    <a
-                      href="javascript:void(0)"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-bookmark-outline"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mt-4">
-                <a
-                  href="shop-item-detail.html"
-                  className="hover:text-indigo-600 text-lg font-semibold"
-                >
-                  Women Block Heels
-                </a>
-                <div className="flex justify-between items-center mt-1">
-                  <p className="text-green-600">
-                    $16.00 <del className="text-red-600">$21.00</del>
-                  </p>
-                  <ul className="font-medium text-amber-400 list-none">
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="group">
-              <div className="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
-                <img src="assets/images/shop/items/s15.jpg" alt="" />
-
-                <div className="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
-                  <a
-                    href="shop-cart.html"
-                    className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-slate-900 border-slate-900 text-white w-full rounded-md"
-                  >
-                    Add to Cart
-                  </a>
-                </div>
-
-                <ul className="list-none absolute top-[10px] end-4 opacity-0 group-hover:opacity-100 duration-500">
-                  <li>
-                    <a
-                      href="javascript:void(0)"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-heart"></i>
-                    </a>
-                  </li>
-                  <li className="mt-1">
-                    <a
-                      href="shop-item-detail.html"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-eye-outline"></i>
-                    </a>
-                  </li>
-                  <li className="mt-1">
-                    <a
-                      href="javascript:void(0)"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-bookmark-outline"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mt-4">
-                <a
-                  href="shop-item-detail.html"
-                  className="hover:text-indigo-600 text-lg font-semibold"
-                >
-                  Shorts
-                </a>
-                <div className="flex justify-between items-center mt-1">
-                  <p className="text-green-600">
-                    $16.00 <del className="text-red-600">$21.00</del>
-                  </p>
-                  <ul className="font-medium text-amber-400 list-none">
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="group">
-              <div className="relative overflow-hidden shadow dark:shadow-gray-800 group-hover:shadow-lg group-hover:dark:shadow-gray-800 rounded-md duration-500">
-                <img src="assets/images/shop/items/s16.jpg" alt="" />
-
-                <div className="absolute -bottom-20 group-hover:bottom-3 start-3 end-3 duration-500">
-                  <NavLink
-                    to="/cart"
-                    className="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-slate-900 border-slate-900 text-white w-full rounded-md"
-                  >
-                    Add to Cart
-                  </NavLink>
-                </div>
-
-                <ul className="list-none absolute top-[10px] end-4 opacity-0 group-hover:opacity-100 duration-500">
-                  <li>
-                    <a
-                      href="javascript:void(0)"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-heart"></i>
-                    </a>
-                  </li>
-                  <li className="mt-1">
-                    <a
-                      href="shop-item-detail.html"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-eye-outline"></i>
-                    </a>
-                  </li>
-                  <li className="mt-1">
-                    <a
-                      href="javascript:void(0)"
-                      className="h-8 w-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white"
-                    >
-                      <i className="mdi mdi-bookmark-outline"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mt-4">
-                <a
-                  href="shop-item-detail.html"
-                  className="hover:text-indigo-600 text-lg font-semibold"
-                >
-                  Masks
-                </a>
-                <div className="flex justify-between items-center mt-1">
-                  <p className="text-green-600">
-                    $16.00 <del className="text-red-600">$21.00</del>
-                  </p>
-                  <ul className="font-medium text-amber-400 list-none">
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                    <li className="inline">
-                      <i className="mdi mdi-star"></i>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>

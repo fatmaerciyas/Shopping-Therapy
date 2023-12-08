@@ -37,26 +37,28 @@ const MyLogsPage = () => {
   }
 
   return (
-    <div className="text-center container w-full content-end justify-center m-12">
-      <h1 className="text-2xl font-bold">My Logs</h1>
-      <div className="pageTemplate3 items-stretch">
-        <div className="grid grid-cols-6 p-2 border-2 border-gray-200 rounded-lg">
-          <span>No</span>
-          <span>Date</span>
-          <span>Username</span>
-          <span className="col-span-3">Description</span>
-        </div>
-        {myLogs.map((item, index) => (
-          <div
-            key={index}
-            className="grid grid-cols-6 p-2 border-2 border-gray-200 rounded-lg"
-          >
-            <span>{index + 1}</span>
-            <span>{moment(item.createdAt).fromNow()}</span>
-            <span>{item.userName}</span>
-            <span className="col-span-3">{item.description}</span>
+    <div className="min-h-100vh flex grow bg-slate-50 text-slate-900 dark:bg-navy-900">
+      <div className="text-center container w-full content-end justify-center m-12">
+        <h1 className="text-2xl font-bold">My Logs</h1>
+        <div className="pageTemplate3 items-stretch">
+          <div className="grid grid-cols-6 p-2 border-2 border-gray-200 rounded-lg">
+            <span>No</span>
+            <span>Date</span>
+            <span>Username</span>
+            <span className="col-span-3">Description</span>
           </div>
-        ))}
+          {myLogs.map((item, index) => (
+            <div
+              key={index}
+              className="grid grid-cols-6 p-2 border-2 border-gray-200 rounded-lg"
+            >
+              <span>{index + 1}</span>
+              <span>{moment(item.createdAt).fromNow()}</span>
+              <span>{item.userName}</span>
+              <span className="col-span-3">{item.description}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
