@@ -8,6 +8,8 @@ export interface Product {
 
   brand: string;
   quantity: number;
+  category: string;
+
   //   productCarts?: any;
   //   productCategories?: any;
   //   comments?: any;

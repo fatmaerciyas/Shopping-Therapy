@@ -35,6 +35,8 @@ import MessageDetail from "../pages/dashboard/MessageDetail";
 import Order from "../pages/dashboard/Order";
 import OrderDetail from "../pages/dashboard/OrderDetail";
 import ThankYouPage from "../pages/public/ThankYouPage";
+import ProductManagement from "../pages/dashboard/ProductManagement";
+import AddProduct from "../pages/dashboard/AddProduct";
 
 const GlobalRouter = () => {
   return (
@@ -70,6 +72,11 @@ const GlobalRouter = () => {
             element={<MessageDetail />}
           />
           <Route path={PATH_DASHBOARD.orderDetail} element={<OrderDetail />} />
+          <Route
+            path={PATH_DASHBOARD.productManagement}
+            element={<ProductManagement />}
+          />
+          <Route path={PATH_DASHBOARD.addProducts} element={<AddProduct />} />
           <Route path={PATH_DASHBOARD.inbox} element={<InboxPage />} />
           <Route path={PATH_DASHBOARD.myLogs} element={<MyLogsPage />} />
           <Route path={PATH_DASHBOARD.user} element={<UserPage />} />

@@ -88,53 +88,55 @@ const UpdateRolePage = () => {
   }
 
   return (
-    <div className="p-4 w-2/4 mx-auto flex flex-col gap-4">
-      <div className="bg-white p-2 rounded-md flex flex-col gap-4">
-        <h1 className="text-2xl font-bold">Update Role</h1>
+    <div className="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900">
+      <div className="p-4 w-2/3  mx-auto flex flex-col gap-4">
+        <div className=" p-2 rounded-md flex flex-col gap-4">
+          <h1 className="text-2xl text-indigo-500 font-bold">Update Role</h1>
 
-        <div className="border border-dashed border-purple-300 rounded-md">
-          <h4 className="text-xl">
-            UserName:
-            <span className="text-2xl font-bold ml-2 px-2 py-1 text-purple-600 rounded-md">
-              {userName}
-            </span>
-          </h4>
-          <h4 className="text-xl">
-            Current Role:
-            <span className="text-2xl font-bold ml-2 px-2 py-1 text-purple-600 rounded-md">
-              {user?.roles[0]}
-            </span>
-          </h4>
-        </div>
+          <div className="border border-dashed border-purple-300 p-4 rounded-md">
+            <h4 className="text-xl text-slate-700">
+              UserName:
+              <span className="text-2xl ml-2 px-2 py-1 text-purple-800 rounded-md">
+                {userName}
+              </span>
+            </h4>
+            <h4 className="text-xl text-slate-700">
+              Current Role:
+              <span className="text-2xl font-bold ml-2 px-2 py-1 text-purple-800 rounded-md">
+                {user?.roles[0]}
+              </span>
+            </h4>
+          </div>
 
-        <h4 className="text-xl font-bold">New Role:</h4>
+          <h4 className="text-xl text-indigo-500 font-bold">New Role:</h4>
 
-        <select
-          value={role}
-          className="w-80"
-          onChange={(e) => setRole(e.target.value)}
-        >
-          {allowedRolesForUpdateArray(loggedInUser).map((item) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
+          <select
+            value={role}
+            className="  w-80 py-2 text-slate-600 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-300 rounded-lg outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+            onChange={(e) => setRole(e.target.value)}
+          >
+            {allowedRolesForUpdateArray(loggedInUser).map((item) => (
+              <option className="text-slate-600" key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
 
-        <div className="grid grid-cols-2 gap-4 mt-12">
-          <Button
-            label="Cancel"
-            onClick={() => navigate("/dashboard/users-management")}
-            type="button"
-            variant="secondary"
-          />
-          <Button
-            label="Update"
-            onClick={() => UpdateRole()}
-            type="button"
-            variant="primary"
-            loading={postLoading}
-          />
+          <div className="grid grid-cols-2 gap-4 mt-12">
+            <Button
+              label="Cancel"
+              onClick={() => navigate("/dashboard/users-management")}
+              type="button"
+              variant="secondary"
+            />
+            <Button
+              label="Update"
+              onClick={() => UpdateRole()}
+              type="button"
+              variant="success"
+              loading={postLoading}
+            />
+          </div>
         </div>
       </div>
     </div>

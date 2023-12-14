@@ -2,7 +2,7 @@ import Spinner from "../../layout/Spinner";
 import { useEffect, useState } from "react";
 //import moment from "moment";
 //import { NavLink } from "react-router-dom";
-import { Basket, IBasket } from "../../models/Basket";
+import { Basket } from "../../models/Basket";
 import useAuth from "../../hooks/useAuth.hook";
 import axios from "axios";
 import { baseUrl } from "../../api/url.contants";
@@ -12,7 +12,6 @@ import { Cart } from "../../models/Cart";
 export default function Order() {
   const [basket, setBasket] = useState<Basket[]>([]);
   const [cart, setCart] = useState<Cart[]>([]);
-  const [item, setItem] = useState<Cart[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const { user } = useAuth();
 
@@ -56,7 +55,7 @@ export default function Order() {
       >
         <main className="main-content mail-app w-full px-[var(--margin-x)] pb-6">
           <div className="flex">
-            <p className="ml-0 text-2xl my-4">Inbox</p>
+            <p className="ml-0 text-2xl text-indigo-500 my-8">My Orders</p>
           </div>
           <div className="card ml-0">
             {cart.map((item) => (

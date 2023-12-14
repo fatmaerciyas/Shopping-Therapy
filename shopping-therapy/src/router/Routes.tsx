@@ -56,4 +56,6 @@ export const PATH_DASHBOARD = {
   user: "/dashboard/user",
   orders: "/dashboard/order",
   orderDetail: "/dashboard/order/:id",
+  productManagement: "/dashboard/productManagement",
+  addProducts: "/dashboard/addProducts",
 };
