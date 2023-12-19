@@ -53,6 +53,15 @@ const Product = {
     requests.get(`Product?categoryId=${categoryId}`),
 };
 
+// const User = {
+//   createProduct: (user: any) => requests.postForm("Auth", createFormData(user)),
+//   updateProduct: (user: any, id: number) =>
+//     requests.putForm(`Auth?id=${id}`, createFormData(user)),
+//   deleteProduct: (id: number) => requests.delete(`Product/${id}`),
+//   getByCategory: (user: any, categoryId: number) =>
+//     requests.get(`Auth?categoryId=${categoryId}`),
+// };
+
 const Category = {
   createCategory: (category: any) =>
     requests.postForm("Category", createFormData(category)),
