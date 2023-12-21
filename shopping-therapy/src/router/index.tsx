@@ -40,6 +40,7 @@ import AddProduct from "../pages/dashboard/AddProduct";
 import CargoManagement from "../pages/dashboard/CargoManagement";
 import UpdateCargoStatusPage from "../pages/dashboard/UpdateCargoStatusPage";
 import UpdateMyProfilePage from "../pages/dashboard/UpdateMyProfilePage";
+import AddUser from "../pages/dashboard/AddUser";
 
 const GlobalRouter = () => {
   return (
@@ -91,6 +92,7 @@ const GlobalRouter = () => {
             path={PATH_DASHBOARD.updateMyProfile}
             element={<UpdateMyProfilePage />}
           />
+          <Route path={PATH_DASHBOARD.addUser} element={<AddUser />} />
           <Route path={PATH_DASHBOARD.addProducts} element={<AddProduct />} />
           <Route path={PATH_DASHBOARD.inbox} element={<InboxPage />} />
           <Route path={PATH_DASHBOARD.myLogs} element={<MyLogsPage />} />

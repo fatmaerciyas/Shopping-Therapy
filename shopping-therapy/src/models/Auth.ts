@@ -5,6 +5,7 @@ export interface IRegisterDto {
   email: string;
   password: string;
   address: string;
+  image: string;
 }
 
 export interface ILoginDto {
