@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { baseUrl } from "../../api/url.contants";
+import { baseUrl } from "../../../api/url.contants";
 import axios from "axios";
-import { IAuthUser } from "../../models/Auth";
-import Spinner from "../../layout/Spinner";
+import { IAuthUser } from "../../../models/Auth";
+import Spinner from "../../../layout/Spinner";
 import { NavLink, useNavigate } from "react-router-dom";
-import Button from "../../layout/dashboard/Button";
+import Button from "../../../layout/dashboard/Button";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const UserPage = () => {
@@ -30,7 +30,21 @@ const UserPage = () => {
   if (!isLoaded) return <Spinner />;
 
   const handleDelete = (id: string) => {
-    console.log(id);
+    // try {
+    //   axios.post(`https://localhost:7049/api/Auth/deleteItem?id=${categoryId}`);
+    //   console.log(category);
+    //   toast.success("Deleted category");
+    //   setIsLoaded(true);
+    // } catch (error) {
+    //   setIsLoaded(true);
+    //   const err = error as { data: string; status: number };
+    //   const { status } = err;
+    //   if (status === 401) {
+    //     toast.error("Somethings went wrong");
+    //   } else {
+    //     toast.error("An Error occurred. Please contact admins");
+    //   }
+    // }
   };
   return (
     <div

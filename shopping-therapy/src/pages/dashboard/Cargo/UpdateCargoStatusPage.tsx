@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { baseUrl } from "../../api/url.contants";
-import { Cart } from "../../models/Cart";
+import { baseUrl } from "../../../api/url.contants";
+import { Cart } from "../../../models/Cart";
 import { useEffect, useState } from "react";
-import Spinner from "../../layout/Spinner";
-import Button from "../../layout/dashboard/Button";
+import Spinner from "../../../layout/Spinner";
+import Button from "../../../layout/dashboard/Button";
 import { toast } from "react-hot-toast";
 
 export default function UpdateCargoStatusPage() {

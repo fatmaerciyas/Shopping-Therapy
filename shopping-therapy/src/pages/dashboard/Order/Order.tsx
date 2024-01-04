@@ -1,13 +1,13 @@
-import Spinner from "../../layout/Spinner";
+import Spinner from "../../../layout/Spinner";
 import { useEffect, useState } from "react";
 //import moment from "moment";
 //import { NavLink } from "react-router-dom";
-import { Basket } from "../../models/Basket";
-import useAuth from "../../hooks/useAuth.hook";
+import { Basket } from "../../../models/Basket";
+import useAuth from "../../../hooks/useAuth.hook";
 import axios from "axios";
-import { baseUrl } from "../../api/url.contants";
+import { baseUrl } from "../../../api/url.contants";
 import { NavLink } from "react-router-dom";
-import { Cart } from "../../models/Cart";
+import { Cart } from "../../../models/Cart";
 
 export default function Order() {
   const [basket, setBasket] = useState<Basket[]>([]);

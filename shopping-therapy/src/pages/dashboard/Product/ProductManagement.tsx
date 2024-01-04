@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Product } from "../../models/Product";
-import Spinner from "../../layout/Spinner";
+import { Product } from "../../../models/Product";
+import Spinner from "../../../layout/Spinner";
 import axios from "axios";
-import { baseUrl } from "../../api/url.contants";
+import { baseUrl } from "../../../api/url.contants";
 import { NavLink, useNavigate } from "react-router-dom";
-import Button from "../../layout/dashboard/Button";
+import Button from "../../../layout/dashboard/Button";
 import toast from "react-hot-toast";
 
 export default function ProductManagement() {
@@ -45,13 +45,11 @@ export default function ProductManagement() {
     <>
       <div
         id="root"
-        className="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
+        className="min-h-100vh flex md:px-12 lg:px-24  bg-slate-50 dark:bg-navy-900"
       >
-        <main className="main-content mail-app w-full px-[var(--margin-x)] pb-6">
+        <main className=" mt-20  w-full  px-[var(--margin-x)] pb-6">
           <div className="flex justify-between">
-            <p className="ml-0 text-2xl text-indigo-500 mb-8">
-              Product Management
-            </p>
+            <p className=" text-2xl text-indigo-500 mb-8">Product Management</p>
             <Button
               label="New Product"
               onClick={() => navigate(`/dashboard/addProducts`)}
@@ -82,11 +80,11 @@ export default function ProductManagement() {
               Price
             </div>
           </div>
-          <div className="card ml-0">
+          <div className="card ">
             {products.map((item) => (
               <div
                 key={item.productId}
-                className="flex cursor-pointer flex-row border-b p-2.5 font-semibold text-slate-700 hover:bg-slate-100 dark:border-navy-500 dark:text-navy-100 dark:hover:bg-navy-600 sm:flex-row sm:items-left"
+                className="flex h-16 cursor-pointer flex-row border-b p-2.5 font-semibold text-slate-700 hover:bg-slate-100 dark:border-navy-500 dark:text-navy-100 dark:hover:bg-navy-600 sm:flex-row sm:items-left"
               >
                 <div className="flex items-left justify-between">
                   <div className="flex  space-x-2 sm:w-72">
@@ -100,7 +98,7 @@ export default function ProductManagement() {
                 </div>
                 <div className="flex flex-1 items-left justify-between space-x-2">
                   <img
-                    className="rounded-full ml-24 w-16 "
+                    className="rounded-full ml-24 w-10 h-12 "
                     src={item.image}
                     alt="avatar"
                   />

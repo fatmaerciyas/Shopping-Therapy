@@ -43,6 +43,7 @@ export const PATH_DASHBOARD = {
   dashboard: "/dashboard",
   usersManagement: "/dashboard/users-management",
   updateRole: "/dashboard/update-role/:userName",
+  allMessages: "/dashboard/all-messages",
   createMessage: "/dashboard/create-message",
   sendMessage: "/dashboard/send-message",
   inbox: "/dashboard/inbox",
@@ -62,4 +63,7 @@ export const PATH_DASHBOARD = {
   updateCargo: "/dashboard/update-cargo/:cartId",
   updateMyProfile: "/dashboard/update-my-profile/:id",
   addUser: "/dashboard/add-user",
+  categoryManagement: "/dashboard/category-management",
+  addCategory: "/dashboard/add-category",
+  updateCategory: "/dashboard/update-category/:categoryId",
 };

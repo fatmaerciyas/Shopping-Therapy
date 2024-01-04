@@ -1,11 +1,11 @@
-import axiosInstance from "../../api/axiosInstance";
-import { IMessageDto } from "../../models/Message";
-import { MY_INBOX_MESSAGE_URL } from "../../api/globalConfig";
+import axiosInstance from "../../../api/axiosInstance";
+import { IMessageDto } from "../../../models/Message";
+import { MY_INBOX_MESSAGE_URL } from "../../../api/globalConfig";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import moment from "moment";
-import Spinner from "../../layout/Spinner";
-import DashboardSidebar from "../../components/dashboard/sidebar/DashboardSidebar";
+import Spinner from "../../../layout/Spinner";
+import DashboardSidebar from "../../../components/dashboard/sidebar/DashboardSidebar";
 import { NavLink } from "react-router-dom";
 
 const InboxPage = () => {

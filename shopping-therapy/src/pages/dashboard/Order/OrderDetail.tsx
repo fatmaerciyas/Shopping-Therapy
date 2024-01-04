@@ -1,9 +1,9 @@
 import { NavLink, useParams } from "react-router-dom";
-import Spinner from "../../layout/Spinner";
-import { baseUrl } from "../../api/url.contants";
+import Spinner from "../../../layout/Spinner";
+import { baseUrl } from "../../../api/url.contants";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Product } from "../../models/Product";
+import { Product } from "../../../models/Product";
 
 export default function OrderDetail() {
   const { id } = useParams();

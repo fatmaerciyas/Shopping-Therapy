@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { CargoEnum, Cart } from "../../models/Cart";
-import { baseUrl } from "../../api/url.contants";
+import { CargoEnum, Cart } from "../../../models/Cart";
+import { baseUrl } from "../../../api/url.contants";
 import axios from "axios";
-import Spinner from "../../layout/Spinner";
-import Button from "../../layout/dashboard/Button";
+import Spinner from "../../../layout/Spinner";
+import Button from "../../../layout/dashboard/Button";
 import { NavLink } from "react-router-dom";
 
 // class MyBasket {

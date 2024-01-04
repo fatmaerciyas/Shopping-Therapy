@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { Product } from "../../models/Product";
+import { Product } from "../../../models/Product";
 
-import agent from "../../api/agent";
+import agent from "../../../api/agent";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { baseUrl } from "../../api/url.contants";
-import { Category } from "../../models/Category";
+import { baseUrl } from "../../../api/url.contants";
+import { Category } from "../../../models/Category";
 import axios from "axios";
-import Spinner from "../../layout/Spinner";
+import Spinner from "../../../layout/Spinner";
 export default function AddProduct() {
   const [product, setProduct] = useState<Partial<Product>>({
     name: "",

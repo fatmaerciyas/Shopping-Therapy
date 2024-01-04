@@ -1,18 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../api/axiosInstance";
-import { CREATE_MESSAGE_URL, USERNAMES_LIST_URL } from "../../api/globalConfig";
-import UsernamesComboBox from "../../components/dashboard/send-message/UsernamesComboBox";
-import InputField from "../../layout/InputField";
-import Spinner from "../../layout/Spinner";
-import Button from "../../layout/dashboard/Button";
-import { ISendMessageDto } from "../../models/Message";
-import { PATH_DASHBOARD } from "../../router/Routes";
+import axiosInstance from "../../../api/axiosInstance";
+import {
+  CREATE_MESSAGE_URL,
+  USERNAMES_LIST_URL,
+} from "../../../api/globalConfig";
+import UsernamesComboBox from "../../../components/dashboard/send-message/UsernamesComboBox";
+import InputField from "../../../layout/InputField";
+import Spinner from "../../../layout/Spinner";
+import Button from "../../../layout/dashboard/Button";
+import { ISendMessageDto } from "../../../models/Message";
+import { PATH_DASHBOARD } from "../../../router/Routes";
 import { useState, useEffect } from "react";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-hot-toast";
-import DashboardSidebar from "../../components/dashboard/sidebar/DashboardSidebar";
+import DashboardSidebar from "../../../components/dashboard/sidebar/DashboardSidebar";
 
 const SendMessagePage = () => {
   const [usernames, setUsernames] = useState<string[]>([]);

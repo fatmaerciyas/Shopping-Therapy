@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import DashboardSidebar from "../../components/dashboard/sidebar/DashboardSidebar";
-import { IMessageDto } from "../../models/Message";
-import Spinner from "../../layout/Spinner";
-import { baseUrl } from "../../api/url.contants";
+import DashboardSidebar from "../../../components/dashboard/sidebar/DashboardSidebar";
+import { IMessageDto } from "../../../models/Message";
+import Spinner from "../../../layout/Spinner";
+import { baseUrl } from "../../../api/url.contants";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import moment from "moment";

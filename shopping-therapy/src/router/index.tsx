@@ -13,10 +13,10 @@ import {
   ownerAccessRoles,
 } from "../auth/auth.utils";
 import DashboardPage from "../pages/dashboard/DashboardPage";
-import SendMessagePage from "../pages/dashboard/SendMessagePage";
-import InboxPage from "../pages/dashboard/InboxPage";
+import SendMessagePage from "../pages/dashboard/Message/SendMessagePage";
+import InboxPage from "../pages/dashboard/Message/InboxPage";
 import MyLogsPage from "../pages/dashboard/MyLogsPage";
-import UserPage from "../pages/dashboard/UserPage";
+import UserPage from "../pages/dashboard/User/UserPage";
 import ManagerPage from "../pages/dashboard/ManagerPage";
 import UsersManagementPage from "../pages/dashboard/UserManagementPage";
 import UpdateRolePage from "../pages/dashboard/UpdateRolePage";
@@ -30,17 +30,21 @@ import ProductDetail from "../pages/public/ProductDetail";
 import CartPage from "../pages/public/CartPage";
 import CheckoutPage from "../pages/public/CheckoutPage";
 import ContactPage from "../pages/public/ContactPage";
-import MySendboxPage from "../pages/dashboard/MySendboxPage";
-import MessageDetail from "../pages/dashboard/MessageDetail";
-import Order from "../pages/dashboard/Order";
-import OrderDetail from "../pages/dashboard/OrderDetail";
+import MySendboxPage from "../pages/dashboard/Message/MySendboxPage";
+import MessageDetail from "../pages/dashboard/Message/MessageDetail";
+import Order from "../pages/dashboard/Order/Order";
+import OrderDetail from "../pages/dashboard/Order/OrderDetail";
 import ThankYouPage from "../pages/public/ThankYouPage";
-import ProductManagement from "../pages/dashboard/ProductManagement";
-import AddProduct from "../pages/dashboard/AddProduct";
-import CargoManagement from "../pages/dashboard/CargoManagement";
-import UpdateCargoStatusPage from "../pages/dashboard/UpdateCargoStatusPage";
-import UpdateMyProfilePage from "../pages/dashboard/UpdateMyProfilePage";
-import AddUser from "../pages/dashboard/AddUser";
+import ProductManagement from "../pages/dashboard/Product/ProductManagement";
+import AddProduct from "../pages/dashboard/Product/AddProduct";
+import CargoManagement from "../pages/dashboard/Cargo/CargoManagement";
+import UpdateCargoStatusPage from "../pages/dashboard/Cargo/UpdateCargoStatusPage";
+import UpdateMyProfilePage from "../pages/dashboard/User/UpdateMyProfilePage";
+import AddUser from "../pages/dashboard/User/AddUser";
+import CategoryManagement from "../pages/dashboard/Category/CategoryManagement";
+import AddCategory from "../pages/dashboard/Category/AddCategory";
+import UpdateCategory from "../pages/dashboard/Category/UpdateCategory";
+import AllMessagesPage from "../pages/dashboard/Message/AllMessages";
 
 const GlobalRouter = () => {
   return (
@@ -72,6 +76,10 @@ const GlobalRouter = () => {
             element={<SendMessagePage />}
           />
           <Route
+            path={PATH_DASHBOARD.allMessages}
+            element={<AllMessagesPage />}
+          />
+          <Route
             path={PATH_DASHBOARD.messageDetail}
             element={<MessageDetail />}
           />
@@ -92,6 +100,16 @@ const GlobalRouter = () => {
             path={PATH_DASHBOARD.updateMyProfile}
             element={<UpdateMyProfilePage />}
           />
+          <Route
+            path={PATH_DASHBOARD.categoryManagement}
+            element={<CategoryManagement />}
+          />
+          <Route path={PATH_DASHBOARD.addCategory} element={<AddCategory />} />
+          <Route
+            path={PATH_DASHBOARD.updateCategory}
+            element={<UpdateCategory />}
+          />
+
           <Route path={PATH_DASHBOARD.addUser} element={<AddUser />} />
           <Route path={PATH_DASHBOARD.addProducts} element={<AddProduct />} />
           <Route path={PATH_DASHBOARD.inbox} element={<InboxPage />} />

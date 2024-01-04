@@ -77,7 +77,7 @@ const Layout = () => {
       <body className="font-nunito text-base bg-slate-800 text-white ">
         {isAuthenticated ? (
           <>
-            <div className="flex flex-col ">
+            <div className="flex flex-col w-full md:w-4/5 mx-auto ">
               {sideBarRenderer()}
               <Outlet />
             </div>
@@ -93,6 +93,7 @@ const Layout = () => {
 
         <Header />
       </body>
+      <script src="../../assets/libs/NavbarDashboard.js"></script>
 
       <script src="../../assets/libs/shufflejs/shuffle.min.js"></script>
       <script src="../../assets/libs/jarallax/jarallax.min.js"></script>
