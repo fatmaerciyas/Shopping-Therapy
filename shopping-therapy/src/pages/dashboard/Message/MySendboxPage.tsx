@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import moment from "moment";
 import Spinner from "../../../layout/Spinner";
-import DashboardSidebar from "../../../components/dashboard/sidebar/DashboardSidebar";
+import MessageSidebar from "../../../components/dashboard/sidebar/MessageSidebar";
 import { NavLink } from "react-router-dom";
 
 const MySendboxPage = () => {
@@ -45,7 +45,7 @@ const MySendboxPage = () => {
         id="root"
         className="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
       >
-        <DashboardSidebar />
+        <MessageSidebar />
         <main className="main-content mail-app w-full px-[var(--margin-x)] pb-6">
           <div className="flex flex-col-reverse py-5 sm:flex-row sm:justify-between">
             <div className="mt-2 flex items-left justify-between space-x-1">

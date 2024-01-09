@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import DashboardSidebar from "../../../components/dashboard/sidebar/DashboardSidebar";
+import MessageSidebar from "../../../components/dashboard/sidebar/MessageSidebar";
 import { IMessageDto } from "../../../models/Message";
 import Spinner from "../../../layout/Spinner";
 import { baseUrl } from "../../../api/url.contants";
@@ -27,7 +27,7 @@ export default function MessageDetail() {
         id="root"
         className="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
       >
-        <DashboardSidebar />
+        <MessageSidebar />
         <main className="main-content mail-app w-full px-[var(--margin-x)] pb-6">
           <div className="flex flex-col-reverse py-5 sm:flex-row sm:justify-between">
             <div className="mt-2 flex items-left justify-between space-x-1">

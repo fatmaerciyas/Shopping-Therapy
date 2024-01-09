@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export default function DashboardSidebar() {
+export default function MessageSidebar() {
   return (
     <>
       <div className="sidebar print:hidden">

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import moment from "moment";
 import Spinner from "../../../layout/Spinner";
-import DashboardSidebar from "../../../components/dashboard/sidebar/DashboardSidebar";
+import MessageSidebar from "../../../components/dashboard/sidebar/MessageSidebar";
 import { NavLink } from "react-router-dom";
 
 const InboxPage = () => {
@@ -46,7 +46,7 @@ const InboxPage = () => {
         id="root"
         className="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
       >
-        <DashboardSidebar />
+        <MessageSidebar />
         <main className="main-content mail-app w-full px-[var(--margin-x)] pb-6">
           <div className="flex">
             <p className="ml-28 text-2xl my-4">Inbox</p>

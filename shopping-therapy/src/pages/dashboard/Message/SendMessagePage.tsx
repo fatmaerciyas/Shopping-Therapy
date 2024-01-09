@@ -15,7 +15,7 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-hot-toast";
-import DashboardSidebar from "../../../components/dashboard/sidebar/DashboardSidebar";
+import MessageSidebar from "../../../components/dashboard/sidebar/MessageSidebar";
 
 const SendMessagePage = () => {
   const [usernames, setUsernames] = useState<string[]>([]);
@@ -100,7 +100,7 @@ const SendMessagePage = () => {
         id="root"
         className="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
       >
-        <DashboardSidebar />
+        <MessageSidebar />
 
         <main className="main-content container w-full pb-8">
           <div className=" ml-24 grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
