@@ -6,7 +6,7 @@ import Button from "./dashboard/Button";
 import { PATH_DASHBOARD, PATH_PUBLIC } from "../router/Routes";
 
 export default function Header() {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, user, logout } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -88,7 +88,11 @@ export default function Header() {
 
             <li className=" inline-block ">
               <Link
-                to={isAuthenticated ? "/dashboard" : "/login"}
+                to={
+                  isAuthenticated
+                    ? `/dashboard/update-my-profile/${user?.id}`
+                    : "/login"
+                }
                 className="dropdown-toggle h-9 w-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center rounded-full bg-indigo-600 hover:bg-indigo-700 border border-indigo-600 hover:border-indigo-700 text-slate-200"
                 type="button"
               >

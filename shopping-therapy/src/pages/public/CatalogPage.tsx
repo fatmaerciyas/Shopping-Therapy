@@ -6,6 +6,8 @@ import { baseUrl } from "../../api/url.contants";
 import Categories from "../../components/category/Categories";
 import ProductListing from "../../components/product/ProductListing";
 import Spinner from "../../layout/Spinner";
+import { AiFillAudio } from "react-icons/ai";
+import useSpeechRecognition from "../../hooks/useSpeechRecognition";
 
 export default function Catalog() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -15,6 +17,10 @@ export default function Catalog() {
   const [sort, setSort] = useState("");
 
   const [query, setQuery] = useState("Electronics");
+
+  //to voice search
+  const { text, startListening, isListening, hasRecognitionSupport } =
+    useSpeechRecognition();
 
   useEffect(() => {
     async function fetchdata() {
@@ -29,14 +35,30 @@ export default function Catalog() {
     fetchdata();
   }, []);
 
+  // Search query inside of products
   function handleSearch() {
     setIsLoaded(false);
-    const filteredProducts = products.filter((product) =>
-      product.name.toLowerCase().includes(query.toLowerCase())
-    );
+    let filteredProducts: Product[];
+    if (text) {
+      filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(text.toLowerCase())
+      );
+    } else {
+      filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(query.toLowerCase())
+      );
+    }
+
     setProducts(filteredProducts);
     setIsLoaded(true);
   }
+
+  useEffect(() => {
+    if (text) {
+      setQuery(text);
+      handleSearch();
+    }
+  }, [text]);
 
   if (!isLoaded) return <Spinner />;
 
@@ -70,46 +92,54 @@ export default function Catalog() {
           <div className="grid md:grid-cols-12  gap-[80px]">
             <div className="lg:col-span-4 mt-[72px]  md:col-span-6">
               <div className="shadow dark:shadow-gray-800 p-6 rounded-md bg-white dark:bg-slate-900 sticky top-20">
-                <form>
-                  <div className="grid grid-cols-1 gap-3">
-                    <div>
-                      <label className="hidden font-semibold"></label>
-                      <div className="relative">
-                        <i
-                          data-feather="search"
-                          className="w-4 h-4 absolute top-3 start-3"
-                        ></i>
+                <div className="grid grid-cols-1 gap-3">
+                  <div className="text-black">
+                    <label className="hidden font-semibold"></label>
+                    <div className="relative flex justify-between gap-2">
+                      {/* Set the query */}
+                      <input
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        className="form-input w-full py-2 px-3 h-10 ps-9 bg-transparent dark:bg-slate-900 dark:text-slate-400 rounded outline-none border border-gray-300 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
+                        placeholder="Search"
+                      />
+                      {hasRecognitionSupport ? (
+                        <>
+                          <button onClick={startListening}>
+                            <AiFillAudio className=" text-slate-600 border border-neutral-900 rounded-lg w-10 h-10 p-2" />
+                          </button>
 
-                        <input
-                          value={query}
-                          onChange={(e) => setQuery(e.target.value)}
-                          className="form-input w-full py-2 px-3 h-10 ps-9 bg-transparent dark:bg-slate-900 dark:text-slate-400 rounded outline-none border border-gray-300 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0"
-                          placeholder="Search"
-                        />
-                      </div>
+                          {isListening ? (
+                            <div className=" text-rose-700 p-2">Listening</div>
+                          ) : null}
+                        </>
+                      ) : (
+                        <p>No</p>
+                      )}
                     </div>
+                  </div>
 
-                    <Categories
-                      isLoaded={isLoaded}
-                      categories={categories}
-                      setProducts={setProducts}
-                    />
+                  <Categories
+                    isLoaded={isLoaded}
+                    categories={categories}
+                    setProducts={setProducts}
+                  />
 
-                    <div className="mt-2">
-                      <a
-                        onClick={handleSearch}
-                        type="submit"
-                        className="py-2 px-5 inline-block
+                  {/* Send to the function  */}
+                  <div className="mt-2">
+                    <a
+                      onClick={handleSearch}
+                      type="submit"
+                      className="py-2 px-5 inline-block
                         tracking-wide border align-middle duration-500 text-base
                         text-center bg-indigo-600 hover:bg-indigo-700
                         border-indigo-600 hover:border-indigo-700 text-white
                         rounded-md w-full"
-                      >
-                        Apply filter
-                      </a>
-                    </div>
+                    >
+                      Apply filter
+                    </a>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
             <ProductListing
