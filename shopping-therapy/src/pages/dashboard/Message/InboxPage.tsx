@@ -49,7 +49,7 @@ const InboxPage = () => {
         <MessageSidebar />
         <main className="main-content mail-app w-full px-[var(--margin-x)] pb-6">
           <div className="flex">
-            <p className="ml-28 text-2xl my-4">Inbox</p>
+            <p className="ml-28 text-2xl my-4 text-slate-800">Inbox</p>
           </div>
           <div className="card ml-28">
             {/* IF NOT READ CSS IS */}

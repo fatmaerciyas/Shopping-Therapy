@@ -48,6 +48,77 @@ export default function CategoryManagement() {
     <>
       <div
         id="root"
+        className="min-h-100vh flex grow pl-20 bg-slate-50  dark:bg-navy-900"
+      >
+        <main className=" mx-auto py-6 flex-grow">
+          <div className="flex justify-between mt-20">
+            <p className=" text-2xl text-indigo-500 mb-8">
+              Category Management
+            </p>
+            <Button
+              label="New Category"
+              onClick={() => navigate(`/dashboard/add-category`)}
+              type="button"
+              variant="success"
+            />
+          </div>
+          <section className="overflow-x-auto  text-slate-800">
+            <table className="w-full table-auto">
+              <thead className="border border-b rounded-xl">
+                <tr className="bg-slate-100">
+                  <th className="py-3 px-4 text-left font-bold">Name</th>
+                  <th className="py-3 px-4 text-left font-bold">Image</th>
+                  <th className="py-3 px-4 text-left font-bold">Description</th>
+                  <th className="py-3 px-4 text-left font-bold">Update</th>
+                  <th className=" py-3 px-4 text-left font-bold sm:table-cell">
+                    Delete
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 bg-white rounded-lg">
+                {category.map((item) => (
+                  <tr
+                    key={item.categoryId}
+                    className="hover:bg-gray-50 dark:hover:bg-gray-900 transition-all"
+                  >
+                    <td className="py-3 px-4 text-sm">{item.name}</td>
+                    <td className="py-3 px-4">
+                      <img
+                        className="rounded-full w-12 h-12 sm:w-16 sm:h-16"
+                        src={item.image}
+                        alt="avatar"
+                      />
+                    </td>
+                    <td className="py-3 px-4 text-sm text-center">
+                      {item.description}
+                    </td>
+                    <td className=" py-3 px-4 text-sm sm:table-cell">
+                      <button className="mr-6 btn space-x-2 bg-info/10 text-indigo-500  hover:bg-info/20 focus:bg-info/20 active:bg-info/25">
+                        <NavLink
+                          to={`/dashboard/update-category/${item?.categoryId}`}
+                        >
+                          <span>Update</span>
+                        </NavLink>
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleDelete(item.categoryId)}
+                        className="btn space-x-2 bg-error/10 text-error  hover:bg-error/20 focus:bg-error/20 active:bg-error/25"
+                      >
+                        <AiOutlineDelete />
+                        <span> Delete </span>{" "}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        </main>
+      </div>
+      {/* <div
+        id="root"
         className="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
       >
         <main className="main-content mail-app w-full px-[var(--margin-x)] pb-6">
@@ -132,7 +203,7 @@ export default function CategoryManagement() {
             ))}
           </div>
         </main>
-      </div>
+      </div> */}
     </>
   );
 }

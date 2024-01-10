@@ -59,6 +59,7 @@ export const PATH_DASHBOARD = {
   productManagement: "/dashboard/productManagement",
   addProducts: "/dashboard/addProducts",
   cargoManagement: "/dashboard/cargo-management",
+  cargo: "/dashboard/cargo",
   updateCargo: "/dashboard/update-cargo/:cartId",
   updateMyProfile: "/dashboard/update-my-profile/:id",
   addUser: "/dashboard/add-user",

@@ -41,7 +41,7 @@ const MyLogsPage = () => {
       <div className="text-center container w-full content-end justify-center m-12">
         <h1 className="text-2xl font-bold">My Logs</h1>
         <div className="pageTemplate3 items-stretch">
-          <div className="grid grid-cols-6 p-2 border-2 border-gray-200 rounded-lg">
+          <div className="grid grid-cols-6 bg-white p-2 border-2 border-gray-200 rounded-lg">
             <span>No</span>
             <span>Date</span>
             <span>Username</span>
@@ -50,7 +50,7 @@ const MyLogsPage = () => {
           {myLogs.map((item, index) => (
             <div
               key={index}
-              className="grid grid-cols-6 p-2 border-2 border-gray-200 rounded-lg"
+              className="grid grid-cols-6 p-2 border-2 border-gray-200 hover:bg-gray-50 bg-white rounded-lg"
             >
               <span>{index + 1}</span>
               <span>{moment(item.createdAt).fromNow()}</span>

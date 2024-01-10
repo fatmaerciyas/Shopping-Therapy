@@ -8,6 +8,7 @@ import axios from "axios";
 import { baseUrl } from "../../../api/url.contants";
 import { NavLink } from "react-router-dom";
 import { Cart } from "../../../models/Cart";
+import Button from "../../../layout/dashboard/Button";
 
 export default function Order() {
   const [basket, setBasket] = useState<Basket[]>([]);
@@ -50,6 +51,70 @@ export default function Order() {
   return (
     <>
       <div
+        id="root"
+        className="min-h-100vh flex grow pl-20 bg-slate-50  dark:bg-navy-900"
+      >
+        <main className="mx-auto py-6 flex-grow">
+          <div className="flex justify-between mt-20">
+            <p className="text-2xl text-indigo-500 mb-8">My Orders</p>
+          </div>
+          <section className="overflow-x-auto text-slate-800">
+            <table className="w-full table-auto">
+              <thead className="bg-slate-100">
+                <tr className="border border-b rounded-t-xl">
+                  <th className="py-3 px-4 text-left font-bold">Name</th>
+                  <th className="py-3 px-4 text-left font-bold">Brand</th>
+                  <th className="py-3 px-4 text-left font-bold">Image</th>
+                  <th className="py-3 px-4 text-left font-bold">Quantity</th>
+                  <th className="py-3 px-4 text-left font-bold">Price</th>
+                  <th className="py-3 px-4 text-left font-bold">Details</th>
+                  <th className="py-3 px-4 text-left font-bold">Delete</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200 rounded-b-lg">
+                {cart.map((item) => (
+                  <tr
+                    key={item.productId}
+                    className="hover:bg-gray-50 dark:hover:bg-gray-900 transition-all"
+                  >
+                    <td className="py-3 px-4 text-sm">{item.product.name}</td>
+                    <td className="py-3 px-4 text-sm">{item.product.brand}</td>
+                    <td className="py-3 px-4">
+                      <img
+                        className="rounded-full w-12 h-12 sm:w-16 sm:h-16"
+                        src={item.product.image}
+                        alt="avatar"
+                      />
+                    </td>
+                    <td className="py-3 px-4 text-sm text-left">
+                      {item.product.quantity}
+                    </td>
+                    <td className="py-3 px-4 text-sm">{item.product.price}</td>
+                    <td className="py-3 px-4">
+                      <NavLink to={`/dashboard/order/${item.productId}`}>
+                        <Button
+                          label="Details"
+                          type="button"
+                          variant="primary"
+                        />
+                      </NavLink>
+                    </td>
+                    <td className="py-3 px-4">
+                      <Button
+                        label="Delete"
+                        onClick={() => handleDelete(item.cartId)}
+                        type="button"
+                        variant="delete"
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        </main>
+      </div>
+      {/* <div
         id="root"
         className="min-h-100vh flex grow bg-slate-50 dark:bg-navy-900"
       >
@@ -183,7 +248,7 @@ export default function Order() {
             ))}
           </div>
         </main>
-      </div>
+      </div> */}
     </>
   );
 }

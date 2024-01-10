@@ -53,7 +53,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="pageTemplate1 flex flex-row  bg-[#f0ecf7] gap-4  py-24 ">
+    <div className="pageTemplate1 flex flex-row h-screen  bg-[#f0ecf7] gap-4  py-24 ">
       {/* <div>Left</div> */}
 
       {/* <div className="absolute -top-40 -left-40 w-48 h-48 bg-gradient-to-br from-[#ef32d9]  to-[#89fffd] rounded-full blur-3xl"></div>

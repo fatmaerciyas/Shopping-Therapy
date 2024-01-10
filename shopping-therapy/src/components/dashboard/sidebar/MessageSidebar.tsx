@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 export default function MessageSidebar() {
   return (
     <>
-      <div className="sidebar print:hidden">
-        <div className="sidebar-panel">
+      <div className="sidebar relative mt-20">
+        <div className="sidebar-panel  ">
           <div className="flex h-full grow flex-col bg-white pl-[var(--main-sidebar-width)] dark:bg-navy-750">
             <div className="flex h-[calc(100%-4.5rem)] grow flex-col">
-              <div className="is-scrollbar-hidden grow overflow-y-auto">
-                <div className="mt-2 px-4">
+              <div className="is-scrollbar-hidden grow overflow-y-auto ">
+                <div className="mt-2 px-4 ">
                   <button className="btn mb-4 w-full space-x-2 rounded-full border border-slate-200 py-2 font-medium text-slate-800 hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-500 dark:text-navy-50 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90">
                     <NavLink
                       to="/dashboard/create-message"
@@ -117,37 +117,6 @@ export default function MessageSidebar() {
                           className="text-xs w-12 h-8"
                         >
                           New Message
-                        </NavLink>
-                      </div>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a
-                      className="group flex justify-between space-x-2 rounded-lg p-2 tracking-wide text-error outline-none transition-all hover:bg-error/20 focus:bg-error/20"
-                      href="#"
-                    >
-                      <div className="flex items-left space-x-2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4.5 w-4.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                          />
-                        </svg>
-
-                        <NavLink
-                          to="/dashboard/create-message"
-                          className="text-xs w-12 h-8"
-                        >
-                          Trash
                         </NavLink>
                       </div>
                     </a>

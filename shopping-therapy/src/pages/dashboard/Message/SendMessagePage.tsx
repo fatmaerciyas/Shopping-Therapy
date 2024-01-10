@@ -105,7 +105,7 @@ const SendMessagePage = () => {
         <main className="main-content container w-full pb-8">
           <div className=" ml-24 grid grid-cols-12 gap-4 sm:gap-5 lg:gap-6">
             <div className="col-span-12  lg:col-span-12">
-              <div className="card">
+              <div className="card mt-12">
                 <div className="tabs flex flex-col">
                   <div className="tab-content p-4 sm:p-5">
                     <form onSubmit={handleSubmit(onSubmitSendMessageForm)}>

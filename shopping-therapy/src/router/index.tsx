@@ -45,6 +45,7 @@ import CategoryManagement from "../pages/dashboard/Category/CategoryManagement";
 import AddCategory from "../pages/dashboard/Category/AddCategory";
 import UpdateCategory from "../pages/dashboard/Category/UpdateCategory";
 import AllMessagesPage from "../pages/dashboard/Message/AllMessages";
+import MyCargos from "../pages/dashboard/Cargo/MyCargos";
 
 const GlobalRouter = () => {
   return (
@@ -92,6 +93,7 @@ const GlobalRouter = () => {
             path={PATH_DASHBOARD.cargoManagement}
             element={<CargoManagement />}
           />
+          <Route path={PATH_DASHBOARD.cargo} element={<MyCargos />} />
           <Route
             path={PATH_DASHBOARD.updateCargo}
             element={<UpdateCargoStatusPage />}
@@ -109,6 +111,7 @@ const GlobalRouter = () => {
             path={PATH_DASHBOARD.updateCategory}
             element={<UpdateCategory />}
           />
+          <Route path={PATH_DASHBOARD.orders} element={<Order />} />
 
           <Route path={PATH_DASHBOARD.addUser} element={<AddUser />} />
           <Route path={PATH_DASHBOARD.addProducts} element={<AddProduct />} />
@@ -128,7 +131,6 @@ const GlobalRouter = () => {
             path={PATH_DASHBOARD.updateRole}
             element={<UpdateRolePage />}
           />
-          <Route path={PATH_DASHBOARD.orders} element={<Order />} />
           <Route
             path={PATH_DASHBOARD.systemLogs}
             element={<SystemLogsPage />}
