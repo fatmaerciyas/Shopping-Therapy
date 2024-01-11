@@ -54,11 +54,6 @@ const LoginPage = () => {
 
   return (
     <div className="pageTemplate1 flex flex-row h-screen  bg-[#f0ecf7] gap-4  py-24 ">
-      {/* <div>Left</div> */}
-
-      {/* <div className="absolute -top-40 -left-40 w-48 h-48 bg-gradient-to-br from-[#ef32d9]  to-[#89fffd] rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 -right-40 w-32 h-32 bg-gradient-to-br from-[#cc2b5e] to-[#753a88] rounded-full blur-3xl"></div> */}
-      {/* <div>Right</div> */}
       <form
         onSubmit={handleSubmit(onSubmitLoginForm)}
         className="rounded-md flex-1 py-16 flex flex-col w-1/3 justify-center items-center  rounded-r-2xl"

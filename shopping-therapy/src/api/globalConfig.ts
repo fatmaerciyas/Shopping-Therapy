@@ -17,9 +17,9 @@ export const LOGS_URL = "/Logs";
 export const MY_LOGS_URL = "/Logs/mine";
 
 const PATH_PUBLIC = { login: "/login", home: "/" };
-const PATH_DASHBOARD = { dashboard: "/dashboard" };
+export const PATH_DASHBOARD = { dashboard: "/dashboard" };
 
 // Auth Routes
 export const PATH_AFTER_REGISTER = PATH_PUBLIC.login;
-export const PATH_AFTER_LOGIN = PATH_DASHBOARD.dashboard;
+// export const PATH_AFTER_LOGIN = PATH_DASHBOARD.dashboard;
 export const PATH_AFTER_LOGOUT = PATH_PUBLIC.home;

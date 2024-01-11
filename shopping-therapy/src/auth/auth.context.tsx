@@ -18,12 +18,13 @@ import axiosInstance from "../api/axiosInstance";
 import {
   LOGIN_URL,
   ME_URL,
-  PATH_AFTER_LOGIN,
+  // PATH_AFTER_LOGIN,
   PATH_AFTER_LOGOUT,
   PATH_AFTER_REGISTER,
   REGISTER_URL,
 } from "../api/globalConfig";
 import toast from "react-hot-toast";
+import { PATH_DASHBOARD } from "../router/Routes";
 // We need a reducer function for useReducer hook
 const authReducer = (state: IAuthContextState, action: IAuthContextAction) => {
   if (action.type === IAuthContextActionTypes.LOGIN) {
@@ -142,7 +143,12 @@ const AuthContextProvider = ({ children }: IProps) => {
       type: IAuthContextActionTypes.LOGIN,
       payload: userInfo,
     });
-    navigate(PATH_AFTER_LOGIN);
+
+    if (userInfo?.roles && userInfo.roles.includes("ADMIN")) {
+      navigate(PATH_DASHBOARD.usersManagement);
+    } else {
+      navigate(PATH_DASHBOARD.dashboard);
+    }
   }, []);
 
   // Logout Method

@@ -160,7 +160,7 @@ export default function HomePage() {
               setSort={setSort}
               sort={sort}
               gridState="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-8 gap-12"
-            />{" "}
+            />
           </div>
         </div>
 

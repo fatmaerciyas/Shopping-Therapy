@@ -268,7 +268,7 @@ export default function SidebarDashboard() {
                           </>
                         )}
 
-                        <div className="flex flex-col items-center space-y-3 py-3">
+                        <div className="flex absolute flex-col bottom-16 pr-3 items-center space-y-3 py-3">
                           <NavLink
                             to={`/dashboard/update-my-profile/${user?.id}`}
                           >
